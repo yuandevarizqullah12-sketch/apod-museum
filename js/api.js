@@ -79,3 +79,9 @@ export async function getWiki(e) {
     });
   } catch { return null; }
 }
+
+// Resized, WebP-converted copies via Vercel Image Optimization (configured in vercel.json).
+const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
+export const W = [256, 640, 1080, 1920];
+export const optUrl = (u, w) => `/_vercel/image?url=${encodeURIComponent(u)}&w=${w}&q=75`;
+export const srcset = (u, ws = W) => (LOCAL || !/^https:\/\//.test(u) ? '' : ws.map(w => `${optUrl(u, w)} ${w}w`).join(', '));

@@ -7,7 +7,7 @@ const box = $('#detail'), date = new URLSearchParams(location.search).get('date'
     const e = await getByDate(date);
     if (!e) return void (box.innerHTML = msg('No APOD was found for this date.'));
     document.title = e.title + ' · NASA APOD MUSEUM';
-    const media = e.media === 'image' && e.image ? img(e, false) : e.media !== 'image' && /^https:\/\//.test(e.image) ? '' : img(e, false);
+    const media = e.media === 'image' && e.image ? img(e, { eager: true, sizes: '(max-width:1200px) 100vw,1120px', ws: [640, 1080, 1920], w: 1120, h: 630 }) : e.media !== 'image' && /^https:\/\//.test(e.image) ? '' : img(e, { eager: true, sizes: '(max-width:1200px) 100vw,1120px', ws: [640, 1080, 1920], w: 1120, h: 630 });
     box.innerHTML = `<div class="media">${media}</div>${e.media !== 'image' ? `<p class="state">This entry is ${esc(e.media)} media. <a href="${esc(e.link)}" rel="noopener">Watch it on the original NASA page</a>.</p>` : ''}
 <article class="body"><time>${e.date}</time><h1>${esc(e.title)}</h1><p>${esc(e.text)}</p><div id="wiki"></div>
 <div class="credits"><p>${e.credit ? esc(e.credit) + '<br>' : 'Credit: see the original NASA page for image credit and copyright.<br>'}<a href="${esc(e.link)}" rel="noopener">Original NASA source</a></p></div></article>`;

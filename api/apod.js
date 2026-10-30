@@ -2,6 +2,7 @@
 const BASE = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic';
 const CODE = /^\d{6}$/;
 export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'no-store'); // overridden only for successful responses
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
   const q = req.query || {};
   const p = new URLSearchParams();
@@ -25,9 +26,10 @@ export default async function handler(req, res) {
     if (r.status === 404) return res.status(404).json({ error: 'Not found' });
     if (r.status === 429) return res.status(429).json({ error: 'Rate limited' });
     if (!r.ok) return res.status(502).json({ error: 'Upstream error' });
-    const data = await r.json();
+    let data = await r.json();
+    if (Array.isArray(data)) data = data.map(({ basic_html, ...rest }) => rest); // lists don't need full HTML
     const recent = q.id === undefined && !q.date_from;
-    res.setHeader('Cache-Control', `public, s-maxage=${recent ? 21600 : 604800}, stale-while-revalidate=86400`);
+    res.setHeader('Cache-Control', `public, s-maxage=${recent ? 1800 : 604800}, stale-while-revalidate=${recent ? 3600 : 86400}`);
     return res.status(200).json(data);
   } catch { return res.status(502).json({ error: 'Network failure' }); }
 }
