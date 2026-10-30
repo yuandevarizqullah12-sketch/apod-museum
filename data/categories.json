@@ -1,0 +1,17 @@
+{"collections":[
+{"id":"nebulae","title":"Nebulae","intro":"Clouds of gas and dust where stars are born or end their lives.","keywords":["nebula","nebulae","pillars of creation","molecular cloud"]},
+{"id":"galaxies","title":"Galaxies","intro":"Vast systems of stars, gas and dust bound by gravity.","keywords":["galaxy","galaxies","andromeda","milky way"]},
+{"id":"planets","title":"Planets","intro":"Worlds of our solar system and beyond.","keywords":["mercury","venus","mars","jupiter","saturn","uranus","neptune","exoplanet"]},
+{"id":"moons","title":"Moons","intro":"Natural satellites, from our Moon to the moons of giant planets.","keywords":["moon","lunar","europa","titan","enceladus","ganymede","phobos"]},
+{"id":"solar-system","title":"Solar System","intro":"Comets, asteroids, eclipses and neighbors orbiting the Sun.","keywords":["comet","asteroid","solar system","meteor","aurora","eclipse","kuiper"]},
+{"id":"sun","title":"Sun","intro":"Our nearest star and its activity.","keywords":["the sun","solar flare","sunspot","solar wind","corona","prominence"]},
+{"id":"black-holes","title":"Black Holes","intro":"Regions where gravity allows nothing to escape.","keywords":["black hole","sagittarius a","event horizon","quasar"]},
+{"id":"star-clusters","title":"Star Clusters","intro":"Groups of stars bound together by gravity.","keywords":["star cluster","globular","open cluster","pleiades"]},
+{"id":"exploration","title":"Space Exploration","intro":"Missions, spacecraft and astronauts.","keywords":["astronaut","spacecraft","rover","mission","telescope","rocket","space station","probe","launch","webb","hubble"]}],
+"subjects":[
+["Orion Nebula","Orion Nebula"],["Andromeda","Andromeda Galaxy"],["Pillars of Creation","Pillars of Creation"],["Crab Nebula","Crab Nebula"],
+["Sagittarius A","Sagittarius A*"],["Pleiades","Pleiades"],["Milky Way","Milky Way"],["Whirlpool","Whirlpool Galaxy"],["Horsehead","Horsehead Nebula"],
+["Eagle Nebula","Eagle Nebula"],["Ring Nebula","Ring Nebula"],["Helix Nebula","Helix Nebula"],["Mercury","Mercury (planet)"],["Venus","Venus"],["Mars","Mars"],
+["Jupiter","Jupiter"],["Saturn","Saturn"],["Uranus","Uranus"],["Neptune","Neptune"],["Europa","Europa (moon)"],["Titan","Titan (moon)"],["Enceladus","Enceladus"],
+["Moon","Moon"],["Comet","Comet"],["Aurora","Aurora"],["International Space Station","International Space Station"],
+["Hubble","Hubble Space Telescope"],["Webb","James Webb Space Telescope"],["Black hole","Black hole"]]}

@@ -1,0 +1,10 @@
+import { esc } from './api.js';
+export const FALLBACK = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 3'%3E%3Crect width='4' height='3' fill='%230b1224'/%3E%3Ccircle cx='2' cy='1.5' r='.3' fill='none' stroke='%23334' stroke-width='.04'/%3E%3C/svg%3E";
+export const $ = s => document.querySelector(s);
+export const img = (e, lazy = true) => `<img src="${e.image ? esc(e.image) : FALLBACK}" alt="${esc(e.title)}"${lazy ? ' loading="lazy"' : ''} onerror="this.onerror=null;this.src='${FALLBACK}'">`;
+export const tile = e => `<a class="tile" href="detail.html?date=${e.date}"><div class="ph">${img(e)}${e.media !== 'image' ? '<span class="tag">' + esc(e.media) + '</span>' : ''}</div><time>${e.date}</time><h3>${esc(e.title)}</h3><p>${esc(e.short)}</p></a>`;
+export const msg = (t, cls = '') => `<p class="state ${cls}" role="status">${esc(t)}</p>`;
+const nav = $('#nav'), btn = $('#menu');
+if (btn) btn.addEventListener('click', () => { btn.setAttribute('aria-expanded', nav.classList.toggle('open')); });
+const here = location.pathname.split('/').pop() || 'index.html';
+document.querySelectorAll('#nav a').forEach(a => { const h = a.getAttribute('href'); if (h === here || (here === 'detail.html' && h === 'archive.html')) a.setAttribute('aria-current', 'page'); });
