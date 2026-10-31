@@ -113,8 +113,6 @@ export function draw(canvas, img, [lo, hi]) {
 // ---- blink frame selection: one real observation per 12-hour slot -----------------------------
 export const SLOT = 12 * 36e5, HARD_MAX = 30;
 export const mjdToMs = m => (m - 40587) * 864e5;
-// Random month of the previous calendar year (relative to `now`). `rnd` is injectable for tests.
-export const randomPrevYearMonth = (now = new Date(), rnd = Math.random, not = -1) => { const pool = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].filter(x => x !== not); return { y: now.getUTCFullYear() - 1, m: pool[Math.min(pool.length - 1, Math.floor(rnd() * pool.length))] }; };
 // obs: normalized observations; window [a,b) in ms; band 'all' or '1'..'6'; max 0 = all (HARD_MAX). Only real observations are returned, each at most once.
 export function sampleFrames(obs, a, b, band, max) {
   const cand = obs.filter(o => o.ms !== null && o.ms >= a && o.ms < b && (band === 'all' || String(o.band) === band));
