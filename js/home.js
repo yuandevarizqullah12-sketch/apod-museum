@@ -8,5 +8,5 @@ try {
 } catch (err) { box.innerHTML = msg(err.message, 'err'); }
 
 const probe = new Image();
-probe.onerror = () => { const c = $('#heroCredit'); c.classList.add('warn'); c.textContent = 'Hero photo missing: run "node scripts/get-hero.mjs" to download assets/images/hero-space.jpg.'; };
-probe.src = 'assets/images/hero-space.jpg';
+probe.onerror = () => { const c = $('#heroCredit'); c.classList.add('warn'); c.textContent = 'Hero photo missing: run "node scripts/get-hero.mjs" to download assets/images/hero-space.webp.'; };
+probe.src = 'assets/images/hero-space.webp';

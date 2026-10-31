@@ -10,7 +10,7 @@ Vanilla HTML/CSS/JS site plus one Vercel serverless function (`api/apod.js`). Da
 4. **Deploy:** push to GitHub, import in Vercel, deploy (no build step).
 
 ## Known limitations
-- **Hero image:** no Wikimedia Commons file was license-verified, so the hero uses a CSS-generated background. To add one, verify the Commons file page (license, creator, URL), save it as `assets/images/hero-space.jpg`, and record the credit here.
+- **Hero image:** single file `assets/images/hero-space.webp`; see the Hero photo section for how it is built and credited.
 - Image and credit fields come from `hdurl` and the `basic_html` text; thumbnails are full-size images (lazy-loaded). Image credit extraction is best-effort, so the original NASA link is always shown. Video entries link back to NASA.
 - Collections classify only the latest ~100 entries by keyword.
 - The NASA list endpoint takes legacy YYMMDD dates, so month browsing is per-year. On This Day makes one request per year (cached).
@@ -18,4 +18,4 @@ Vanilla HTML/CSS/JS site plus one Vercel serverless function (`api/apod.js`). Da
 - `fallback.jpg` is replaced by an inline SVG fallback.
 
 ## Hero photo
-`node scripts/get-hero.mjs` downloads `assets/images/hero-space.jpg` (Center of the Milky Way Galaxy IV – Composite; NASA/JPL-Caltech/ESA/CXC/STScI; public domain per its Commons page; confirm the license on the file page before publishing). The homepage shows a visible warning if the file is absent.
+The hero uses one file: `assets/images/hero-space.webp` (1920×960). To rebuild it: `node scripts/get-hero.mjs` (downloads the Commons source to `hero-source.jpg`), then `npm i --no-save sharp && node scripts/optimize-hero.mjs`. Photo: Center of the Milky Way Galaxy IV – Composite; NASA/JPL-Caltech/ESA/CXC/STScI; public domain per its Commons page (confirm on the file page). The homepage shows a visible warning if the file is absent.
