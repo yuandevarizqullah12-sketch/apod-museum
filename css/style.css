@@ -50,3 +50,13 @@ footer{margin-top:var(--s5);border-top:1px solid var(--line);padding:var(--s4) 0
 .grid{grid-template-columns:minmax(0,1fr)}.wiki{grid-template-columns:minmax(0,1fr)}.btn{width:100%;justify-content:center}.hero .credit{text-align:left;margin-top:var(--s2)}.feature .meta{gap:var(--s3)}}
 @media(max-width:360px){:root{--m:16px}.brand{font-size:1rem;letter-spacing:.1em}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* SPHEREx Explorer */
+.sx-note,.sx-meta{color:var(--mut);font-size:.95rem;max-width:72ch}.sx-note{margin-bottom:var(--s3)}.sx-sec{margin-top:var(--s5)}
+.sx-inline{display:inline-flex;gap:var(--s1);align-items:center;font-size:.85rem;color:var(--mut)}.sx-inline select{min-height:44px;background:var(--bg2);color:var(--fg);border:1px solid var(--line);padding:0 8px;font:inherit}
+.sx-card{border-top:1px solid var(--line);padding-top:var(--s2);display:grid;gap:var(--s1);align-content:start;min-width:0}.sx-card h3{overflow-wrap:anywhere;font-size:1rem}
+.sx-card canvas,.sx-cmp canvas,.sx-blink canvas,#sx-viewer canvas{width:100%;max-width:420px;aspect-ratio:1;image-rendering:pixelated;background:var(--bg2);display:block}
+.sx-btns{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin:var(--s2) 0}.sx-btns .btn{min-height:44px;padding:0 var(--s2)}
+.sx-tl{list-style:none;padding:0;display:flex;gap:var(--s1);overflow-x:auto;padding-bottom:var(--s1)}.sx-tl button{min-height:44px;background:var(--bg2);color:var(--fg);border:1px solid var(--line);padding:0 12px;font:inherit;font-size:.85rem;white-space:nowrap;cursor:pointer}.sx-tl button[aria-current=true]{border-color:var(--acc);color:var(--acc)}
+.sx-cmp{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:var(--s3)}.sx-cmp figure{min-width:0}.sx-cmp figcaption{font-size:.85rem;color:var(--mut)}
+.sx-links{padding-left:var(--s3);margin-bottom:var(--s2)}.sx-warn{color:#ffd48a}.sx-card label{font-size:.9rem;display:flex;gap:var(--s1);align-items:center;min-height:32px}
+.sx-card .btn{min-height:44px}
