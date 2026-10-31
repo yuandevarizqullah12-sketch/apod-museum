@@ -35,7 +35,7 @@ export function normalize(rows, collection) {
   return rows.map((r, i) => {
     const tMjd = n(r.t_min), emMin = n(r.em_min), emMax = n(r.em_max), c = emMin !== null && emMax !== null ? (emMin + emMax) / 2 * 1e6 : null; // metres -> microns
     const band = c === null ? null : (BANDS.find(b => c >= b[1] && c <= b[2]) || [])[0] || null;
-    return { id: r.obs_id || r.obs_publisher_did || 'row' + i, tMjd, ms: tMjd === null ? null : mjdMs(tMjd), ra: n(r.s_ra), dec: n(r.s_dec), emMin, emMax, center: c, band,
+    return { id: r.obs_id || r.obs_publisher_did || 'row' + i, key: (r.obs_id || r.obs_publisher_did || 'row' + i) + '|' + (r.access_url || i), tMjd, ms: tMjd === null ? null : mjdMs(tMjd), ra: n(r.s_ra), dec: n(r.s_dec), emMin, emMax, center: c, band,
       url: r.access_url || '', coll: r.obs_collection || collection, instr: r.instrument_name || '', raw: r };
   }).sort((a, b) => (a.ms ?? Infinity) - (b.ms ?? Infinity));
 }
@@ -119,8 +119,8 @@ export function sampleFrames(obs, a, b, band, max) {
   const used = new Set(), picks = []; let slots = 0;
   for (let t = a; t < b; t += SLOT) {
     slots++; const mid = t + SLOT / 2; let best = null;
-    for (const o of cand) if (!used.has(o.id) && o.ms >= t && o.ms < t + SLOT && (!best || Math.abs(o.ms - mid) < Math.abs(best.ms - mid))) best = o; // nearest real exposure inside the slot (±6 h of its centre)
-    if (best) { used.add(best.id); picks.push(best); }
+    for (const o of cand) if (!used.has(o.key) && o.ms >= t && o.ms < t + SLOT && (!best || Math.abs(o.ms - mid) < Math.abs(best.ms - mid))) best = o; // nearest real exposure inside the slot (±6 h of its centre)
+    if (best) { used.add(best.key); picks.push(best); }
   }
   const cap = max > 0 ? max : HARD_MAX; let out = picks;
   if (picks.length > cap) out = Array.from(new Set(Array.from({ length: cap }, (_, i) => Math.round(i * (picks.length - 1) / (cap - 1))))).map(i => picks[i]); // spread evenly, keep time order
