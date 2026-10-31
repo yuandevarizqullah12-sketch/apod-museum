@@ -109,3 +109,22 @@ export function draw(canvas, img, [lo, hi]) {
   }
   g.putImageData(d, 0, 0);
 }
+
+// ---- blink frame selection: one real observation per 12-hour slot -----------------------------
+export const SLOT = 12 * 36e5, HARD_MAX = 30;
+export const mjdToMs = m => (m - 40587) * 864e5;
+// Random month of the previous calendar year (relative to `now`). `rnd` is injectable for tests.
+export const randomPrevYearMonth = (now = new Date(), rnd = Math.random, not = -1) => { const pool = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].filter(x => x !== not); return { y: now.getUTCFullYear() - 1, m: pool[Math.min(pool.length - 1, Math.floor(rnd() * pool.length))] }; };
+// obs: normalized observations; window [a,b) in ms; band 'all' or '1'..'6'; max 0 = all (HARD_MAX). Only real observations are returned, each at most once.
+export function sampleFrames(obs, a, b, band, max) {
+  const cand = obs.filter(o => o.ms !== null && o.ms >= a && o.ms < b && (band === 'all' || String(o.band) === band));
+  const used = new Set(), picks = []; let slots = 0;
+  for (let t = a; t < b; t += SLOT) {
+    slots++; const mid = t + SLOT / 2; let best = null;
+    for (const o of cand) if (!used.has(o.id) && o.ms >= t && o.ms < t + SLOT && (!best || Math.abs(o.ms - mid) < Math.abs(best.ms - mid))) best = o; // nearest real exposure inside the slot (±6 h of its centre)
+    if (best) { used.add(best.id); picks.push(best); }
+  }
+  const cap = max > 0 ? max : HARD_MAX; let out = picks;
+  if (picks.length > cap) out = Array.from(new Set(Array.from({ length: cap }, (_, i) => Math.round(i * (picks.length - 1) / (cap - 1))))).map(i => picks[i]); // spread evenly, keep time order
+  return { picks: out.sort((x, y) => x.ms - y.ms), slots, cand: cand.length, found: picks.length };
+}
