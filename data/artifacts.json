@@ -1,0 +1,2253 @@
+[
+  {
+    "id": "apollo-11-eagle-descent-stage",
+    "name": "Apollo 11 Eagle Lunar Module Descent Stage",
+    "shortName": "Eagle descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 11",
+    "missionAgency": "NASA",
+    "launchDate": "1969-07-16",
+    "landingDate": "1969-07-20",
+    "missionEndDate": "1969-07-21",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "The descent stage has no working systems. It stays at Tranquility Base as a permanent marker of the first crewed Moon landing. Eagle's ascent stage was not left on the surface (see uncertainties).",
+    "landingSite": "Tranquility Base, southern Mare Tranquillitatis (Sea of Tranquility)",
+    "description": "The lower half of the Apollo 11 Lunar Module. Its four legs and landing engine carried Neil Armstrong and Buzz Aldrin down to the Moon.",
+    "missionPurpose": "NASA needed a vehicle that could land two astronauts, support them on the surface and then serve as a launch pad for the trip back to lunar orbit.",
+    "missionStory": "Eagle touched down on 20 July 1969. When the astronauts left on 21 July, the descent stage stayed behind as their launch platform and then as a monument. It is far too small to see from Earth, but NASA's Lunar Reconnaissance Orbiter later photographed it from lunar orbit, where it shows up as a bright spot with a long shadow at low Sun angles.",
+    "scientificLegacy": [
+      {
+        "title": "First crewed landing documented from orbit",
+        "explanation": "Orbital images of the site let scientists and the public see the real hardware, footprint trails and instruments where the first human visit took place."
+      },
+      {
+        "title": "Part of a larger Apollo 11 science site",
+        "explanation": "The crew also left a small seismometer and a passive laser reflector nearby. The reflector is a separate object that scientists can still use for Earth-Moon distance measurements; it is not one of the 25 records in this collection."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1969-07-16",
+        "title": "Apollo 11 launches",
+        "description": "The mission leaves Kennedy Space Center for the Moon."
+      },
+      {
+        "date": "1969-07-20",
+        "title": "Eagle lands",
+        "description": "The Lunar Module touches down in the Sea of Tranquility."
+      },
+      {
+        "date": "1969-07-21",
+        "title": "Ascent stage lifts off",
+        "description": "The descent stage serves as the launch pad and remains on the surface."
+      },
+      {
+        "date": "2009-07-17",
+        "title": "First LRO views released",
+        "description": "LRO's camera team publishes early images of Apollo hardware, including descent stages."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 11 lunar module Eagle Tranquility Base",
+      "alternateQueries": [
+        "Apollo 11 Tranquility Base lunar module",
+        "LRO Apollo 11 landing site",
+        "Apollo 11 Eagle lunar module"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Landing Sites, with Shadows",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/3620/",
+        "sourceType": "official"
+      },
+      {
+        "title": "LROC takes first look at Apollo landing sites",
+        "publisher": "Arizona State University (LROC team)",
+        "url": "https://news.asu.edu/20090717_LROCapollo",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is the date of touchdown (UTC). 1969-07-21 is the liftoff date used as the end of surface operations.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "Sources say the Apollo 11 ascent stage was left in lunar orbit to eventually crash; whether it still orbits is speculation and is not claimed here.",
+      "The 2009-07-17 timeline date is the date of the ASU/NASA release, taken from the URL of the ASU news item."
+    ]
+  },
+  {
+    "id": "apollo-12-intrepid-descent-stage",
+    "name": "Apollo 12 Intrepid Lunar Module Descent Stage",
+    "shortName": "Intrepid descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 12",
+    "missionAgency": "NASA",
+    "launchDate": "1969-11-14",
+    "landingDate": "1969-11-19",
+    "missionEndDate": "1969-11-20",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Passive hardware. It sits on the Ocean of Storms close to the Apollo 12 science station and the older Surveyor 3 lander.",
+    "landingSite": "Ocean of Storms (Oceanus Procellarum), near the Surveyor 3 landing site",
+    "description": "The lower half of Lunar Module Intrepid. Its landing was aimed at a precise spot near a lander that had already been on the Moon for two and a half years.",
+    "missionPurpose": "Apollo 12 was meant to show that Apollo could land at a chosen point, not just in a broad landing zone.",
+    "missionStory": "Intrepid landed on 19 November 1969 within walking distance of Surveyor 3. Astronauts Pete Conrad and Alan Bean walked to the old lander and removed parts of it for study. Intrepid's descent stage stayed behind; a NASA site image shows the descent stage, the science station, Surveyor 3 and the astronauts' trails in one frame.",
+    "scientificLegacy": [
+      {
+        "title": "Proof of precision landing",
+        "explanation": "Landing near Surveyor 3 showed that later Apollo missions could aim for small, scientifically interesting targets."
+      },
+      {
+        "title": "A rare view of hardware aging on the Moon",
+        "explanation": "Having Intrepid, an ALSEP station and Surveyor 3 in one place lets researchers compare how materials of different ages look in the Moon's harsh environment."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1969-11-14",
+        "title": "Apollo 12 launches",
+        "description": "The mission leaves Earth."
+      },
+      {
+        "date": "1969-11-19",
+        "title": "Intrepid lands",
+        "description": "The Lunar Module lands in the Ocean of Storms."
+      },
+      {
+        "date": "1969-11-20",
+        "title": "Visit to Surveyor 3 and departure",
+        "description": "The crew visits Surveyor 3 and the ascent stage leaves the Moon."
+      },
+      {
+        "date": "2011-09-08",
+        "title": "Sharper LRO views",
+        "description": "NASA publishes new LRO images of the Apollo 12, 14 and 17 sites."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 12 lunar module Intrepid Surveyor 3",
+      "alternateQueries": [
+        "Apollo 12 landing site LRO",
+        "Apollo 12 Intrepid Ocean of Storms",
+        "Surveyor 3 Apollo 12"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "New LRO Images Offer Sharper Views of Apollo 12, 14, and 17 Sites",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/10818/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Earth's Moon - Apollo 12 (Surveyor 3 image record)",
+        "publisher": "NASA NSSDCA Image Catalog",
+        "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7133.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Liftoff from the Moon is taken as 1969-11-20. Landing date is UTC.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "The timeline date 2011-09-08 for the LRO release comes from a secondary article date and should be checked against the NASA SVS page.",
+      "Distance between Intrepid and Surveyor 3 is reported differently by different sources, so it is not stated here."
+    ]
+  },
+  {
+    "id": "apollo-14-antares-descent-stage",
+    "name": "Apollo 14 Antares Lunar Module Descent Stage",
+    "shortName": "Antares descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 14",
+    "missionAgency": "NASA",
+    "launchDate": "1971-01-31",
+    "landingDate": "1971-02-05",
+    "missionEndDate": "1971-02-06",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Passive hardware at the Fra Mauro landing site. NASA's orbiter has photographed it together with the Apollo 14 science station and astronaut tracks.",
+    "landingSite": "Fra Mauro highlands",
+    "description": "The lower half of Lunar Module Antares, which carried Alan Shepard and Edgar Mitchell to the Fra Mauro region.",
+    "missionPurpose": "After Apollo 13 failed to land, Apollo 14 returned to the same target area: rocky terrain believed to hold material thrown out by a huge impact.",
+    "missionStory": "Antares landed on 5 February 1971. Shepard and Mitchell set up a science station and made two walks, using a hand-pulled equipment cart. Orbiter images show the descent stage and the station joined by a trail of footprints.",
+    "scientificLegacy": [
+      {
+        "title": "A recovery mission that succeeded",
+        "explanation": "Apollo 14 achieved the goals Apollo 13 could not, and returned samples from a region of great interest to lunar geologists."
+      },
+      {
+        "title": "Orbital images show human activity",
+        "explanation": "LRO pictures of the Antares site show the descent stage, instruments and astronaut paths, helping the public connect the data to a real place."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1971-01-31",
+        "title": "Apollo 14 launches",
+        "description": "The mission leaves Earth."
+      },
+      {
+        "date": "1971-02-05",
+        "title": "Antares lands",
+        "description": "The Lunar Module lands at Fra Mauro."
+      },
+      {
+        "date": "1971-02-06",
+        "title": "Ascent stage lifts off",
+        "description": "The descent stage stays behind as a launch pad and marker."
+      },
+      {
+        "date": "2009-07-21",
+        "title": "LRO image reported",
+        "description": "A news report describes an LRO view showing Antares and the science station connected by astronaut tracks."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 14 lunar module Antares Fra Mauro",
+      "alternateQueries": [
+        "Apollo 14 landing site LRO",
+        "Apollo 14 Antares",
+        "Fra Mauro Apollo 14 ALSEP tracks"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "New LRO Images Offer Sharper Views of Apollo 12, 14, and 17 Sites",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/10818/",
+        "sourceType": "official"
+      },
+      {
+        "title": "LROC takes first look at Apollo landing sites",
+        "publisher": "Arizona State University (LROC team)",
+        "url": "https://news.asu.edu/20090717_LROCapollo",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is UTC. 1971-02-06 is the liftoff date.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "The 2009-07-21 timeline date comes from a secondary news report (Solar Daily) rather than a NASA page."
+    ]
+  },
+  {
+    "id": "apollo-15-falcon-descent-stage",
+    "name": "Apollo 15 Falcon Lunar Module Descent Stage",
+    "shortName": "Falcon descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 15",
+    "missionAgency": "NASA",
+    "launchDate": "1971-07-26",
+    "landingDate": "1971-07-30",
+    "missionEndDate": "1971-08-02",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Passive hardware at Hadley-Apennine, left near the Apollo 15 science station and the first Lunar Roving Vehicle.",
+    "landingSite": "Hadley-Apennine region, beside Hadley Rille",
+    "description": "The lower half of Lunar Module Falcon, a longer-stay lander that carried David Scott and James Irwin plus the first Moon rover.",
+    "missionPurpose": "Apollo 15 was the first of the longer Apollo 'J' missions, built for more time on the surface, more science and a rover.",
+    "missionStory": "Falcon landed on 30 July 1971 beside Hadley Rille and the Apennine mountains. The astronauts ranged much farther than earlier crews because they could drive. When they left on 2 August, the descent stage, science station and rover stayed behind.",
+    "scientificLegacy": [
+      {
+        "title": "A new level of exploration",
+        "explanation": "Apollo 15 showed how a longer stay and a rover could greatly widen the area a crew could study."
+      },
+      {
+        "title": "Part of a connected set of left-behind tools",
+        "explanation": "The Falcon site holds a science station, a rover and a lander stage, so it tells a fuller story than any one object."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1971-07-26",
+        "title": "Apollo 15 launches",
+        "description": "The mission leaves Earth."
+      },
+      {
+        "date": "1971-07-30",
+        "title": "Falcon lands",
+        "description": "The Lunar Module touches down near Hadley Rille."
+      },
+      {
+        "date": "1971-07-31",
+        "title": "First rover drive",
+        "description": "The first Lunar Roving Vehicle is used on the Moon."
+      },
+      {
+        "date": "1971-08-02",
+        "title": "Ascent stage lifts off",
+        "description": "The descent stage remains at the site."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 15 lunar module Falcon Hadley Rille",
+      "alternateQueries": [
+        "Apollo 15 landing site LRO",
+        "Apollo 15 Falcon Hadley Apennine",
+        "Apollo 15 LM Falcon rover"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Landing Sites, with Shadows",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/3620/",
+        "sourceType": "official"
+      },
+      {
+        "title": "50th Anniversary of Apollo 15 and the Lunar Roving Vehicle",
+        "publisher": "U.S. National Archives",
+        "url": "https://visit.archives.gov/whats-on/explore-exhibits/50th-anniversary-apollo-15-and-lunar-roving-vehicle",
+        "sourceType": "government_archive"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is UTC.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "Landing is given as 30 July 1971 (UTC) from general knowledge; the NASA source pages retrieved in this pass confirm the 31 July first rover use and ALSEP deployment but not the exact touchdown time."
+    ]
+  },
+  {
+    "id": "apollo-16-orion-descent-stage",
+    "name": "Apollo 16 Orion Lunar Module Descent Stage",
+    "shortName": "Orion descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 16",
+    "missionAgency": "NASA",
+    "launchDate": "1972-04-16",
+    "landingDate": "1972-04-21",
+    "missionEndDate": "1972-04-24",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Passive hardware in the Descartes Highlands, the only Apollo landing in true lunar highlands terrain.",
+    "landingSite": "Descartes Highlands",
+    "description": "The lower half of Lunar Module Orion, which carried John Young and Charles Duke into the Moon's old, heavily cratered highlands.",
+    "missionPurpose": "Scientists wanted samples from the highlands, which are older than the dark plains, and expected some of them to be volcanic.",
+    "missionStory": "Orion landed on 21 April 1972 and the crew made three moonwalks, using the rover. The results surprised many researchers because the highland rocks did not turn out to be mainly volcanic. Orion's descent stage, a science station and the rover remain at the site.",
+    "scientificLegacy": [
+      {
+        "title": "A lesson in testing assumptions",
+        "explanation": "Apollo 16 showed that an expected explanation can be wrong, which is a central idea in science."
+      },
+      {
+        "title": "Samples from the ancient crust",
+        "explanation": "Highland rocks gathered here help researchers study how the Moon's early crust formed and was battered by impacts."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1972-04-16",
+        "title": "Apollo 16 launches",
+        "description": "The mission leaves Earth."
+      },
+      {
+        "date": "1972-04-21",
+        "title": "Orion lands",
+        "description": "The Lunar Module lands in the Descartes Highlands."
+      },
+      {
+        "date": "1972-04-24",
+        "title": "Ascent stage lifts off",
+        "description": "The descent stage stays behind."
+      },
+      {
+        "date": "2009-07-17",
+        "title": "LRO first look",
+        "description": "Arizona State's LROC team releases early views of Apollo hardware on the Moon."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 16 lunar module Orion Descartes",
+      "alternateQueries": [
+        "Apollo 16 landing site LRO",
+        "Apollo 16 Descartes Highlands",
+        "Apollo 16 Orion LM"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Landing Sites, with Shadows",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/3620/",
+        "sourceType": "official"
+      },
+      {
+        "title": "LROC takes first look at Apollo landing sites",
+        "publisher": "Arizona State University (LROC team)",
+        "url": "https://news.asu.edu/20090717_LROCapollo",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is UTC.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "The statement that highland rocks were not mainly volcanic is well established general knowledge but was not re-checked against a mission-specific NASA page in this pass."
+    ]
+  },
+  {
+    "id": "apollo-17-challenger-descent-stage",
+    "name": "Apollo 17 Challenger Lunar Module Descent Stage",
+    "shortName": "Challenger descent stage",
+    "location": "Moon",
+    "artifactType": "Lunar Module Descent Stage",
+    "missionName": "Apollo 17",
+    "missionAgency": "NASA",
+    "launchDate": "1972-12-07",
+    "landingDate": "1972-12-11",
+    "missionEndDate": "1972-12-14",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Passive hardware at Taurus-Littrow, left at the end of the last crewed Moon landing so far.",
+    "landingSite": "Taurus-Littrow valley",
+    "description": "The lower half of Lunar Module Challenger, which carried Eugene Cernan and geologist Harrison Schmitt to a valley between mountains.",
+    "missionPurpose": "Apollo 17 was the final Apollo landing, and the only one to carry a professional scientist-astronaut.",
+    "missionStory": "Challenger landed on 11 December 1972. The crew made three moonwalks and used the rover to reach craters and hills far from the lander. The descent stage, the rover and a science station stayed behind. NASA's orbiter has since photographed the site at high resolution.",
+    "scientificLegacy": [
+      {
+        "title": "The end of a program, still visible",
+        "explanation": "Sharper LRO images of the Apollo 17 site show the stage and equipment, and mark the place of the last Apollo visit."
+      },
+      {
+        "title": "A scientist on the Moon",
+        "explanation": "Having a geologist on the crew shows how trained scientists can add value to exploration, a lesson for future missions."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1972-12-07",
+        "title": "Apollo 17 launches",
+        "description": "The mission leaves Earth."
+      },
+      {
+        "date": "1972-12-11",
+        "title": "Challenger lands",
+        "description": "The Lunar Module lands at Taurus-Littrow."
+      },
+      {
+        "date": "1972-12-14",
+        "title": "Ascent stage lifts off",
+        "description": "The last crewed liftoff from the Moon so far; the descent stage remains."
+      },
+      {
+        "date": "2011-09-08",
+        "title": "Sharper LRO views",
+        "description": "NASA publishes new LRO images of the Apollo 12, 14 and 17 sites."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 17 lunar module Challenger Taurus-Littrow",
+      "alternateQueries": [
+        "Apollo 17 landing site LRO",
+        "Apollo 17 Taurus-Littrow",
+        "Apollo 17 Challenger LM"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Descent stage status is passive: it has no working systems and is documented from orbit by NASA's Lunar Reconnaissance Orbiter. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "New LRO Images Offer Sharper Views of Apollo 12, 14, and 17 Sites",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/10818/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Landing Sites, with Shadows",
+        "publisher": "NASA Goddard Scientific Visualization Studio",
+        "url": "https://svs.gsfc.nasa.gov/3620/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Lunar Module",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Module",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is UTC.",
+    "uncertainties": [
+      "Exact lunar liftoff times and stage impact details were not re-checked against primary mission transcripts in this research pass.",
+      "The 2011-09-08 timeline date comes from a secondary article date and should be checked against the NASA SVS page.",
+      "'Last crewed landing so far' reflects the situation as of 2026-10-31; it may change when Artemis crews land."
+    ]
+  },
+  {
+    "id": "apollo-15-lunar-roving-vehicle",
+    "name": "Apollo 15 Lunar Roving Vehicle",
+    "shortName": "Apollo 15 rover",
+    "location": "Moon",
+    "artifactType": "Lunar Roving Vehicle",
+    "missionName": "Apollo 15",
+    "missionAgency": "NASA",
+    "launchDate": "1971-07-26",
+    "landingDate": "1971-07-30",
+    "missionEndDate": "1971-08-02",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Parked at Hadley-Apennine after three moonwalks. It has no working crew or controllers; it is passive hardware.",
+    "landingSite": "Hadley-Apennine region",
+    "description": "The first battery-powered Moon buggy, folded into the side of the Lunar Module and driven by David Scott and James Irwin.",
+    "missionPurpose": "To let astronauts travel beyond walking range and carry tools and samples.",
+    "missionStory": "The rover made its first drive on 31 July 1971. The Apollo 15 crew drove about 27.9 kilometres in total, much farther than any walking crew could safely go from the lander. When they left, the rover was parked for good.",
+    "scientificLegacy": [
+      {
+        "title": "It expanded how far crews could explore",
+        "explanation": "A source on the National Archives exhibit notes that rovers made many of the major Apollo 15-17 discoveries possible by extending the crews' range."
+      },
+      {
+        "title": "Proof that electric vehicles can work on the Moon",
+        "explanation": "The rover operated in vacuum and low gravity for three days, an important engineering test for later lunar vehicles."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1971-07-26",
+        "title": "Apollo 15 launches",
+        "description": "The rover travels folded inside the Lunar Module."
+      },
+      {
+        "date": "1971-07-31",
+        "title": "First drive",
+        "description": "Scott and Irwin use the rover for the first time on the Moon."
+      },
+      {
+        "date": "1971-08-02",
+        "title": "Crew departs",
+        "description": "The rover is left parked at Hadley-Apennine."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 15 lunar roving vehicle",
+      "alternateQueries": [
+        "Apollo 15 rover Hadley Rille",
+        "Apollo 15 LRV Scott Irwin",
+        "Apollo 15 moon buggy"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Rovers are passive hardware today. They were driven by astronauts; they are not robotic or remote-controlled. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "50th Anniversary of Apollo 15 and the Lunar Roving Vehicle",
+        "publisher": "U.S. National Archives",
+        "url": "https://visit.archives.gov/whats-on/explore-exhibits/50th-anniversary-apollo-15-and-lunar-roving-vehicle",
+        "sourceType": "government_archive"
+      },
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Lunar Roving Vehicle",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Lunar_Roving_Vehicle",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "missionEndDate is the Lunar Module liftoff date; the rover's last drive was shortly before.",
+    "uncertainties": [
+      "The 27.9 km distance comes from a secondary source (a fan project page) and should be confirmed in the NASA mission report.",
+      "Exact last-use date is assumed to be near the crew's departure (liftoff date shown)."
+    ]
+  },
+  {
+    "id": "apollo-16-lunar-roving-vehicle",
+    "name": "Apollo 16 Lunar Roving Vehicle",
+    "shortName": "Apollo 16 rover",
+    "location": "Moon",
+    "artifactType": "Lunar Roving Vehicle",
+    "missionName": "Apollo 16",
+    "missionAgency": "NASA",
+    "launchDate": "1972-04-16",
+    "landingDate": "1972-04-21",
+    "missionEndDate": "1972-04-24",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Parked in the Descartes Highlands after three moonwalks. Passive hardware.",
+    "landingSite": "Descartes Highlands",
+    "description": "The second Moon buggy, used by John Young and Charles Duke to cross hilly highland terrain.",
+    "missionPurpose": "To carry the crew and samples to the highland sites that scientists had chosen.",
+    "missionStory": "The rover began operations in April 1972. Young and Duke drove it to craters and slopes in the Descartes area. The crew drove roughly 26.7 kilometres in total (see uncertainties) before leaving it behind.",
+    "scientificLegacy": [
+      {
+        "title": "Mobility in rougher terrain",
+        "explanation": "The highlands are hillier than the Apollo 15 plains, so this rover tested the vehicle in more demanding terrain."
+      },
+      {
+        "title": "Samples from a wider area",
+        "explanation": "Driving allowed the crew to collect rocks from several locations instead of just near the lander."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1972-04-16",
+        "title": "Apollo 16 launches",
+        "description": "The rover travels folded on the Lunar Module."
+      },
+      {
+        "date": "1972-04-21",
+        "title": "First use",
+        "description": "The crew deploys the rover after landing."
+      },
+      {
+        "date": "1972-04-24",
+        "title": "Crew departs",
+        "description": "The rover is parked for good."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 16 lunar roving vehicle",
+      "alternateQueries": [
+        "Apollo 16 rover Descartes",
+        "Apollo 16 LRV Young Duke",
+        "Apollo 16 moon buggy"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Rovers are passive hardware today. They were driven by astronauts; they are not robotic or remote-controlled. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "50th Anniversary of Apollo 15 and the Lunar Roving Vehicle",
+        "publisher": "U.S. National Archives",
+        "url": "https://visit.archives.gov/whats-on/explore-exhibits/50th-anniversary-apollo-15-and-lunar-roving-vehicle",
+        "sourceType": "government_archive"
+      },
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Lunar Roving Vehicle",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Lunar_Roving_Vehicle",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "missionEndDate is the Lunar Module liftoff date.",
+    "uncertainties": [
+      "The 26.7 km figure is from general knowledge and was not confirmed by a source retrieved in this research pass.",
+      "The date the rover was first used is assumed to be the landing day (1972-04-21)."
+    ]
+  },
+  {
+    "id": "apollo-17-lunar-roving-vehicle",
+    "name": "Apollo 17 Lunar Roving Vehicle",
+    "shortName": "Apollo 17 rover",
+    "location": "Moon",
+    "artifactType": "Lunar Roving Vehicle",
+    "missionName": "Apollo 17",
+    "missionAgency": "NASA",
+    "launchDate": "1972-12-07",
+    "landingDate": "1972-12-11",
+    "missionEndDate": "1972-12-14",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Parked at Taurus-Littrow after the last crewed lunar landing so far. Passive hardware.",
+    "landingSite": "Taurus-Littrow valley",
+    "description": "The third and last Moon buggy, used by Eugene Cernan and Harrison Schmitt.",
+    "missionPurpose": "To take the crew and a scientist to hills, craters and valley floors far from the lander.",
+    "missionStory": "Apollo 17's crew drove the rover about 35.7 kilometres over three moonwalks. It carried tools and a large set of samples, including rocks gathered at Shorty crater. After the last drive, the rover was parked and left on the Moon.",
+    "scientificLegacy": [
+      {
+        "title": "The longest Apollo drive",
+        "explanation": "A published rover summary lists 35.7 km for Apollo 17, the most of the three missions."
+      },
+      {
+        "title": "Sample variety",
+        "explanation": "The rover let the crew sample many different rock types and soils across the valley."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1972-12-07",
+        "title": "Apollo 17 launches",
+        "description": "The rover travels folded on the Lunar Module."
+      },
+      {
+        "date": "1972-12-11",
+        "title": "Landing and first use",
+        "description": "The crew lands and deploys the rover."
+      },
+      {
+        "date": "1972-12-14",
+        "title": "Crew departs",
+        "description": "The rover remains parked at Taurus-Littrow."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 17 lunar roving vehicle",
+      "alternateQueries": [
+        "Apollo 17 rover Taurus-Littrow",
+        "Apollo 17 LRV Cernan Schmitt",
+        "Apollo 17 moon buggy"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Rovers are passive hardware today. They were driven by astronauts; they are not robotic or remote-controlled. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "50th Anniversary of Apollo 15 and the Lunar Roving Vehicle",
+        "publisher": "U.S. National Archives",
+        "url": "https://visit.archives.gov/whats-on/explore-exhibits/50th-anniversary-apollo-15-and-lunar-roving-vehicle",
+        "sourceType": "government_archive"
+      },
+      {
+        "title": "Apollo Landing Sites",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/apollo-landing-sites/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Lunar Roving Vehicle",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Lunar_Roving_Vehicle",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "missionEndDate is the Lunar Module liftoff date.",
+    "uncertainties": [
+      "The 35.7 km distance comes from a secondary summary page and should be confirmed in NASA mission documentation.",
+      "The mention of Shorty crater is from general knowledge and was not retrieved in this pass."
+    ]
+  },
+  {
+    "id": "apollo-12-alsep",
+    "name": "Apollo 12 ALSEP",
+    "shortName": "Apollo 12 ALSEP",
+    "location": "Moon",
+    "artifactType": "Lunar Surface Science Station (ALSEP)",
+    "missionName": "Apollo 12",
+    "missionAgency": "NASA",
+    "launchDate": "1969-11-14",
+    "landingDate": "1969-11-19",
+    "missionEndDate": "1977-09-30",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "NASA commanded all ALSEP stations off on 30 September 1977, mainly because of budget reasons. The hardware remains at the site and its data are still available for study.",
+    "landingSite": "Ocean of Storms (Oceanus Procellarum)",
+    "description": "The first full Apollo Lunar Surface Experiments Package, left by Pete Conrad and Alan Bean. It ran on a radioisotope power unit and sent its data to Earth by radio.",
+    "missionPurpose": "To measure the Moon's quakes, magnetic field and the particles around it for much longer than one crew's stay.",
+    "missionStory": "The station started sending data on 19 November 1969, the day of the landing. It was designed to run for about a year, but NASA says the Apollo stations ran for up to about eight years. Its seismometer joined those of later missions to form the first network of seismometers on another world.",
+    "scientificLegacy": [
+      {
+        "title": "A working science network",
+        "explanation": "NASA reports that the seismometers at Apollo 12, 14, 15 and 16 operated together as a seismic network."
+      },
+      {
+        "title": "Data still used today",
+        "explanation": "The measurements were archived, including by NASA's Planetary Data System, and continue to be reused by researchers."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1969-11-14",
+        "title": "Apollo 12 launches",
+        "description": "The ALSEP travels inside the Lunar Module."
+      },
+      {
+        "date": "1969-11-19",
+        "title": "Station starts sending data",
+        "description": "The first downlink from the Apollo 12 ALSEP is recorded."
+      },
+      {
+        "date": "1977-09-30",
+        "title": "Support operations end",
+        "description": "NASA shuts down all ALSEP stations and stops processing their data."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 12 ALSEP Apollo Lunar Surface Experiments Package",
+      "alternateQueries": [
+        "Apollo 12 science station Bean ALSEP",
+        "Apollo 12 passive seismic experiment",
+        "Apollo 12 ALSEP Ocean of Storms"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "The ALSEP is a station of several instruments, not a single object. Its shutdown was commanded by NASA, so 'inactive_hardware' is used and not 'communication_lost'. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Lunar Surface Experiments Package (ALSEP) Final Report",
+        "publisher": "NASA (Apollo Lunar Surface Journal archive)",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/19790014808_1979014808.pdf",
+        "sourceType": "official"
+      },
+      {
+        "title": "ALSEP: Apollo Lunar Surface Experiments Package",
+        "publisher": "NASA Apollo Lunar Surface Journal",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/HamishALSEP.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo 12 ALSEP Instrument Host Overview",
+        "publisher": "NASA Planetary Data System (Geosciences Node)",
+        "url": "https://pds-geosciences.wustl.edu/Lunar/urn-nasa-pds-a12sws_solar_wind_28s_1hr/document/a12a_alsep.txt",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Lunar Surface Experiments Package",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Surface_Experiments_Package",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "launchDate is the mission launch. landingDate is the landing and deployment day; first downlink was on 1969-11-19.",
+    "uncertainties": [
+      "NASA says the stations were shut down on 30 September 1977 mainly for budget reasons; a shutdown is a command, not a loss of contact, so lastContactDate is left null.",
+      "The names of individual Apollo 12 instruments are not listed here because the retrieved sources did not give a complete list."
+    ]
+  },
+  {
+    "id": "apollo-14-alsep",
+    "name": "Apollo 14 ALSEP",
+    "shortName": "Apollo 14 ALSEP",
+    "location": "Moon",
+    "artifactType": "Lunar Surface Science Station (ALSEP)",
+    "missionName": "Apollo 14",
+    "missionAgency": "NASA",
+    "launchDate": "1971-01-31",
+    "landingDate": "1971-02-05",
+    "missionEndDate": "1977-09-30",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Shut down by NASA command on 30 September 1977. The station remains at Fra Mauro and its recorded data are still archived.",
+    "landingSite": "Fra Mauro highlands",
+    "description": "The Apollo 14 station of science instruments, set up by Alan Shepard and Edgar Mitchell and powered by a radioisotope generator.",
+    "missionPurpose": "To record seismic activity, the lunar environment and the particles near the Moon over many months.",
+    "missionStory": "Deployed on 5 February 1971, this station had a troubled engineering history, according to a NASA news release written when the stations were turned off. Even so, it kept working until the 1977 shutdown. Orbital images show the station connected to the lander by footprints.",
+    "scientificLegacy": [
+      {
+        "title": "Longer record than the crew's stay",
+        "explanation": "The station kept sending data for years, giving a much longer record than a short visit could."
+      },
+      {
+        "title": "Added a third seismic point",
+        "explanation": "Together with Apollo 12 and later stations, it helped scientists locate quakes and impacts."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1971-01-31",
+        "title": "Apollo 14 launches",
+        "description": "The ALSEP travels inside the Lunar Module."
+      },
+      {
+        "date": "1971-02-05",
+        "title": "Station deployed",
+        "description": "The ALSEP begins sending data from Fra Mauro."
+      },
+      {
+        "date": "1977-09-30",
+        "title": "Support operations end",
+        "description": "NASA shuts down all ALSEP stations."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 14 ALSEP Fra Mauro science station",
+      "alternateQueries": [
+        "Apollo 14 Shepard Mitchell ALSEP deployment",
+        "Apollo 14 ALSEP station",
+        "Apollo 14 passive seismic experiment"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "The ALSEP is a station of several instruments, not a single object. Its shutdown was commanded by NASA, so 'inactive_hardware' is used and not 'communication_lost'. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Lunar Surface Experiments Package (ALSEP) Final Report",
+        "publisher": "NASA (Apollo Lunar Surface Journal archive)",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/19790014808_1979014808.pdf",
+        "sourceType": "official"
+      },
+      {
+        "title": "ALSEP: Apollo Lunar Surface Experiments Package",
+        "publisher": "NASA Apollo Lunar Surface Journal",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/HamishALSEP.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "NASA news release on ALSEP shutdown (Sept 1977)",
+        "publisher": "NASA (via CORE archive)",
+        "url": "https://core.ac.uk/download/158116532.pdf",
+        "sourceType": "government_archive"
+      },
+      {
+        "title": "Apollo Lunar Surface Experiments Package",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Surface_Experiments_Package",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Deployment date and first downlink are both 1971-02-05.",
+    "uncertainties": [
+      "NASA says the stations were shut down on 30 September 1977 mainly for budget reasons; a shutdown is a command, not a loss of contact, so lastContactDate is left null.",
+      "The Apollo 14 station's engineering problems are mentioned in a NASA news release; the details of those problems were not retrieved in this pass."
+    ]
+  },
+  {
+    "id": "apollo-15-alsep",
+    "name": "Apollo 15 ALSEP",
+    "shortName": "Apollo 15 ALSEP",
+    "location": "Moon",
+    "artifactType": "Lunar Surface Science Station (ALSEP)",
+    "missionName": "Apollo 15",
+    "missionAgency": "NASA",
+    "launchDate": "1971-07-26",
+    "landingDate": "1971-07-30",
+    "missionEndDate": "1977-09-30",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Commanded off with the other ALSEP stations on 30 September 1977. It remains at Hadley-Apennine.",
+    "landingSite": "Hadley-Apennine region",
+    "description": "The Apollo 15 science station, set up by David Scott and James Irwin near the lander. It was the first one deployed by a crew that also had a rover.",
+    "missionPurpose": "To measure moonquakes, heat flowing out of the Moon and the lunar environment.",
+    "missionStory": "The station was deployed on 31 July 1971, the day the first rover drive happened. It added a fourth seismic site to the network and measured conditions at Hadley for years. Like the others, it stopped when NASA ended support in 1977.",
+    "scientificLegacy": [
+      {
+        "title": "Extended the seismic network",
+        "explanation": "The Apollo 15 seismometer was one of four ALSEP seismometers working together as a network."
+      },
+      {
+        "title": "Documented long-term lunar conditions",
+        "explanation": "Its long operation gave scientists a record of the Moon's environment across many lunar days."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1971-07-26",
+        "title": "Apollo 15 launches",
+        "description": "The ALSEP travels inside the Lunar Module."
+      },
+      {
+        "date": "1971-07-31",
+        "title": "Station deployed",
+        "description": "The Apollo 15 ALSEP begins sending data."
+      },
+      {
+        "date": "1977-09-30",
+        "title": "Support operations end",
+        "description": "NASA shuts down all ALSEP stations."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 15 ALSEP Hadley Rille science station",
+      "alternateQueries": [
+        "Apollo 15 Scott ALSEP deployment",
+        "Apollo 15 heat flow experiment",
+        "Apollo 15 ALSEP station"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "The ALSEP is a station of several instruments, not a single object. Its shutdown was commanded by NASA, so 'inactive_hardware' is used and not 'communication_lost'. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Lunar Surface Experiments Package (ALSEP) Final Report",
+        "publisher": "NASA (Apollo Lunar Surface Journal archive)",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/19790014808_1979014808.pdf",
+        "sourceType": "official"
+      },
+      {
+        "title": "ALSEP: Apollo Lunar Surface Experiments Package",
+        "publisher": "NASA Apollo Lunar Surface Journal",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/HamishALSEP.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "NASA Technical Reports Server record 20180008613 (ALSEP overview)",
+        "publisher": "NASA NTRS",
+        "url": "https://ntrs.nasa.gov/citations/20180008613",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Lunar Surface Experiments Package",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Surface_Experiments_Package",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Deployment date and first downlink are 1971-07-31.",
+    "uncertainties": [
+      "NASA says the stations were shut down on 30 September 1977 mainly for budget reasons; a shutdown is a command, not a loss of contact, so lastContactDate is left null.",
+      "Mentions of a heat-flow experiment are from NASA's final report contents list; instrument details were not retrieved in full."
+    ]
+  },
+  {
+    "id": "apollo-16-alsep",
+    "name": "Apollo 16 ALSEP",
+    "shortName": "Apollo 16 ALSEP",
+    "location": "Moon",
+    "artifactType": "Lunar Surface Science Station (ALSEP)",
+    "missionName": "Apollo 16",
+    "missionAgency": "NASA",
+    "launchDate": "1972-04-16",
+    "landingDate": "1972-04-21",
+    "missionEndDate": "1977-09-30",
+    "lastContactDate": null,
+    "status": "inactive_hardware",
+    "statusDescription": "Commanded off with the other stations on 30 September 1977. It remains in the Descartes Highlands.",
+    "landingSite": "Descartes Highlands",
+    "description": "The Apollo 16 station of science instruments, set up by John Young and Charles Duke in the highlands.",
+    "missionPurpose": "To add a fourth seismic station and measure the lunar environment from highland terrain.",
+    "missionStory": "The station began sending data on 21 April 1972. NASA's records say it was one of the four seismometer stations that operated together as a seismic network. It continued until the 1977 shutdown.",
+    "scientificLegacy": [
+      {
+        "title": "Highland seismic site",
+        "explanation": "The Apollo 16 station extended the network to a region of old highland rock."
+      },
+      {
+        "title": "Part of the longest-running lunar science set",
+        "explanation": "Its data are part of the ALSEP archive that scientists still study."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1972-04-16",
+        "title": "Apollo 16 launches",
+        "description": "The ALSEP travels inside the Lunar Module."
+      },
+      {
+        "date": "1972-04-21",
+        "title": "Station starts sending data",
+        "description": "The first downlink from the Apollo 16 ALSEP is recorded."
+      },
+      {
+        "date": "1977-09-30",
+        "title": "Support operations end",
+        "description": "NASA shuts down all ALSEP stations."
+      }
+    ],
+    "media": {
+      "searchQuery": "Apollo 16 ALSEP Descartes science station",
+      "alternateQueries": [
+        "Apollo 16 Young Duke ALSEP",
+        "Apollo 16 passive seismic experiment",
+        "Apollo 16 ALSEP station"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "The ALSEP is a station of several instruments, not a single object. Its shutdown was commanded by NASA, so 'inactive_hardware' is used and not 'communication_lost'. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Apollo Lunar Surface Experiments Package (ALSEP) Final Report",
+        "publisher": "NASA (Apollo Lunar Surface Journal archive)",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/19790014808_1979014808.pdf",
+        "sourceType": "official"
+      },
+      {
+        "title": "ALSEP: Apollo Lunar Surface Experiments Package",
+        "publisher": "NASA Apollo Lunar Surface Journal",
+        "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/HamishALSEP.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "NASA Technical Reports Server record 20180008613 (ALSEP overview)",
+        "publisher": "NASA NTRS",
+        "url": "https://ntrs.nasa.gov/citations/20180008613",
+        "sourceType": "official"
+      },
+      {
+        "title": "Apollo Lunar Surface Experiments Package",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Apollo_Lunar_Surface_Experiments_Package",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "First downlink was 1972-04-21 (per the NASA final report table).",
+    "uncertainties": [
+      "NASA says the stations were shut down on 30 September 1977 mainly for budget reasons; a shutdown is a command, not a loss of contact, so lastContactDate is left null.",
+      "A well-known setup mishap with the Apollo 16 heat-flow experiment is not claimed here because it was not confirmed in the sources retrieved."
+    ]
+  },
+  {
+    "id": "surveyor-1",
+    "name": "Surveyor 1",
+    "shortName": "Surveyor 1",
+    "location": "Moon",
+    "artifactType": "Robotic Lander",
+    "missionName": "Surveyor program",
+    "missionAgency": "NASA",
+    "launchDate": "1966-05-30",
+    "landingDate": "1966-06-02",
+    "missionEndDate": "1967-01-07",
+    "lastContactDate": "1967-01-07",
+    "status": "communication_lost",
+    "statusDescription": "Surveyor 1 survived its first lunar night, sent more data afterwards, then fell silent. Its last contact is given as 7 January 1967 (some sources give 8 January because of time zones).",
+    "landingSite": "Ocean of Storms, near the crater Flamsteed",
+    "description": "NASA's first soft landing on the Moon and the first American spacecraft to land on another world, on its first try.",
+    "missionPurpose": "To show that a spacecraft could land softly and to learn whether the Moon's surface could hold up a heavy lander.",
+    "missionStory": "Surveyor 1 touched down on 2 June 1966, four months after the Soviet Luna 9. Its three crushable footpads sank only slightly into the soil, which was good news for Apollo planners. It sent back thousands of pictures and lasted far past its first lunar night.",
+    "scientificLegacy": [
+      {
+        "title": "The ground could hold a lander",
+        "explanation": "The small footpad sinkage gave NASA direct evidence that a crewed lander could be supported."
+      },
+      {
+        "title": "First close-up views of the Moon's surface",
+        "explanation": "Its television camera sent back thousands of images used to plan later landings."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1966-05-30",
+        "title": "Launch",
+        "description": "An Atlas-Centaur rocket launches Surveyor 1."
+      },
+      {
+        "date": "1966-06-02",
+        "title": "Soft landing",
+        "description": "Surveyor 1 lands in the Ocean of Storms."
+      },
+      {
+        "date": "1967-01-06",
+        "title": "Reactivated",
+        "description": "The spacecraft is reactivated for about 12 hours."
+      },
+      {
+        "date": "1967-01-07",
+        "title": "Last contact",
+        "description": "NASA records the last contact."
+      }
+    ],
+    "media": {
+      "searchQuery": "Surveyor 1 lunar lander 1966",
+      "alternateQueries": [
+        "Surveyor 1 Moon surface photo",
+        "Surveyor 1 footpad",
+        "Surveyor program lunar lander"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Surveyor was a robotic lander built to test landing, soil and cameras before Apollo; it was not 'discarded' by an Apollo crew. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Surveyor 1 (NSSDCA master catalog)",
+        "publisher": "NASA Space Science Data Coordinated Archive",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-045A",
+        "sourceType": "official"
+      },
+      {
+        "title": "Mapping the Moon: Surveyor program",
+        "publisher": "Linda Hall Library",
+        "url": "https://exhibitions.lindahall.org/mapping-the-moon/surveyor-program/",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Surveyor 1",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Surveyor_1",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing and last-contact dates differ by one day between sources (UTC vs US time).",
+    "uncertainties": [
+      "The NSSDCA URL is built from the COSPAR ID 1966-045A and was not opened in this pass.",
+      "Count of images (many thousands) is not stated here.",
+      "The reactivation date 1967-01-06 comes from Wikipedia."
+    ]
+  },
+  {
+    "id": "surveyor-3",
+    "name": "Surveyor 3",
+    "shortName": "Surveyor 3",
+    "location": "Moon",
+    "artifactType": "Robotic Lander",
+    "missionName": "Surveyor program",
+    "missionAgency": "NASA",
+    "launchDate": "1967-04-17",
+    "landingDate": "1967-04-20",
+    "missionEndDate": "1967-05-03",
+    "lastContactDate": null,
+    "status": "communication_lost",
+    "statusDescription": "Contact with Surveyor 3 ended in early May 1967 after the lunar night. Apollo 12 astronauts later removed some parts and returned them to Earth; the rest stays on the Moon.",
+    "landingSite": "Ocean of Storms, inside a crater later called Surveyor Crater",
+    "description": "A robotic lander with a camera and a soil-scoop arm. It is the only Surveyor spacecraft visited by humans.",
+    "missionPurpose": "To photograph the surface and test the strength of lunar soil with a small scoop.",
+    "missionStory": "Surveyor 3 landed on 20 April 1967 (19 April in US time zones) after bouncing on touchdown. On 20 November 1969, Apollo 12 astronauts Conrad and Bean walked to it and brought back its camera and other pieces for study.",
+    "scientificLegacy": [
+      {
+        "title": "Real hardware returned from the Moon",
+        "explanation": "Scientists could examine how spacecraft materials changed after about 2.5 years on the surface."
+      },
+      {
+        "title": "Soil strength data",
+        "explanation": "The scoop experiment helped confirm the surface could support Apollo landers."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1967-04-17",
+        "title": "Launch",
+        "description": "Surveyor 3 launches from Cape Canaveral."
+      },
+      {
+        "date": "1967-04-20",
+        "title": "Landing",
+        "description": "Surveyor 3 lands in the Ocean of Storms."
+      },
+      {
+        "date": "1967-05-03",
+        "title": "End of operations",
+        "description": "Operations end after the spacecraft stops responding (date from a secondary table)."
+      },
+      {
+        "date": "1969-11-20",
+        "title": "Apollo 12 visit",
+        "description": "Conrad and Bean remove parts of the spacecraft."
+      }
+    ],
+    "media": {
+      "searchQuery": "Surveyor 3 Apollo 12 Conrad Moon",
+      "alternateQueries": [
+        "Surveyor 3 Pete Conrad",
+        "Surveyor 3 camera returned Apollo 12",
+        "Surveyor 3 lunar lander"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Surveyor was a robotic lander built to test landing, soil and cameras before Apollo; it was not 'discarded' by an Apollo crew. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Earth's Moon - Apollo 12 (Surveyor 3 image record)",
+        "publisher": "NASA NSSDCA Image Catalog",
+        "url": "https://nssdc.gsfc.nasa.gov/imgcat/html/object_page/a12_h_48_7133.html",
+        "sourceType": "official"
+      },
+      {
+        "title": "APOD 2001 March 3: Apollo 12 Visits Surveyor 3",
+        "publisher": "NASA Science (APOD)",
+        "url": "https://science.nasa.gov/image-article/apod-2001-march-3-apollo-12-visits-surveyor-3/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Surveyor 3",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Surveyor_3",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is shown in UTC; US sources use 19 April.",
+    "uncertainties": [
+      "The end-of-operations date comes from a secondary table and is not confirmed by a NASA mission page.",
+      "Which retrieved parts are in museums or labs today was not checked."
+    ]
+  },
+  {
+    "id": "surveyor-5",
+    "name": "Surveyor 5",
+    "shortName": "Surveyor 5",
+    "location": "Moon",
+    "artifactType": "Robotic Lander",
+    "missionName": "Surveyor program",
+    "missionAgency": "NASA",
+    "launchDate": "1967-09-08",
+    "landingDate": "1967-09-11",
+    "missionEndDate": "1967-12-17",
+    "lastContactDate": null,
+    "status": "communication_lost",
+    "statusDescription": "Operations ended in December 1967 (date from a secondary table); the spacecraft fell silent as it lost power.",
+    "landingSite": "Mare Tranquillitatis (Sea of Tranquility), about 25 km from where Apollo 11 later landed",
+    "description": "A robotic lander that carried a camera and a chemical analyzer that bombarded soil with alpha particles to measure its elements.",
+    "missionPurpose": "To test lunar soil chemistry and photograph a candidate Apollo landing area.",
+    "missionStory": "Surveyor 5 landed on 11 September 1967, on a steep slope after a difficult descent. Its soil analysis suggested the surface material resembles basalt. It also sent back about 19,000 images.",
+    "scientificLegacy": [
+      {
+        "title": "First on-site soil chemistry",
+        "explanation": "The alpha-scattering instrument gave a direct measurement of the lunar soil, found to be basaltic."
+      },
+      {
+        "title": "Scouting for Apollo 11",
+        "explanation": "Landing in the Sea of Tranquility gave NASA information about the region Apollo 11 later visited."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1967-09-08",
+        "title": "Launch",
+        "description": "Surveyor 5 launches."
+      },
+      {
+        "date": "1967-09-11",
+        "title": "Landing",
+        "description": "It lands in the Sea of Tranquility."
+      },
+      {
+        "date": "1967-12-17",
+        "title": "End of operations",
+        "description": "Operations end (date from a secondary table)."
+      }
+    ],
+    "media": {
+      "searchQuery": "Surveyor 5 lunar lander Sea of Tranquility",
+      "alternateQueries": [
+        "Surveyor 5 alpha scattering soil",
+        "Surveyor 5 Mare Tranquillitatis",
+        "Surveyor lander Moon 1967"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Surveyor was a robotic lander built to test landing, soil and cameras before Apollo; it was not 'discarded' by an Apollo crew. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Surveyor 5 (NSSDCA master catalog)",
+        "publisher": "NASA Space Science Data Coordinated Archive",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1967-084A",
+        "sourceType": "official"
+      },
+      {
+        "title": "Mapping the Moon: Surveyor program",
+        "publisher": "Linda Hall Library",
+        "url": "https://exhibitions.lindahall.org/mapping-the-moon/surveyor-program/",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Surveyor program",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Surveyor_program",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is shown in UTC.",
+    "uncertainties": [
+      "The NSSDCA URL is built from the COSPAR ID 1967-084A and was not opened in this pass.",
+      "The 'basalt' finding and steep-slope landing are from general knowledge; they were not re-checked in a NASA page.",
+      "The 25 km distance to Apollo 11 is from a secondary table."
+    ]
+  },
+  {
+    "id": "surveyor-6",
+    "name": "Surveyor 6",
+    "shortName": "Surveyor 6",
+    "location": "Moon",
+    "artifactType": "Robotic Lander",
+    "missionName": "Surveyor program",
+    "missionAgency": "NASA",
+    "launchDate": "1967-11-07",
+    "landingDate": "1967-11-10",
+    "missionEndDate": "1967-12-14",
+    "lastContactDate": "1967-12-14",
+    "status": "communication_lost",
+    "statusDescription": "Contact ended in December 1967. NASA treats it as the end of the mission.",
+    "landingSite": "Sinus Medii (Central Bay)",
+    "description": "A robotic lander that made the first liftoff from another world, a short hop on its own engines.",
+    "missionPurpose": "To photograph the area, analyze soil and test whether a spacecraft could lift off and move after landing.",
+    "missionStory": "Surveyor 6 landed on 10 November 1967 (9 November in US time). On 17 November it fired its engines for a short hop to a spot a few metres away, and took stereo pictures of its original footprints. Contact ended in mid-December.",
+    "scientificLegacy": [
+      {
+        "title": "First hop on another world",
+        "explanation": "The short engine hop showed a lander could lift off the Moon, a key step toward Apollo ascent stages."
+      },
+      {
+        "title": "Stereo views of the surface",
+        "explanation": "Pictures from before and after the hop showed how the soil responded to engine thrust and footpads."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1967-11-07",
+        "title": "Launch",
+        "description": "Surveyor 6 launches."
+      },
+      {
+        "date": "1967-11-10",
+        "title": "Landing",
+        "description": "Surveyor 6 lands in Sinus Medii."
+      },
+      {
+        "date": "1967-11-17",
+        "title": "Moon hop",
+        "description": "The lander lifts off briefly and lands again nearby."
+      },
+      {
+        "date": "1967-12-14",
+        "title": "Last contact",
+        "description": "NASA ends operations (date from general knowledge)."
+      }
+    ],
+    "media": {
+      "searchQuery": "Surveyor 6 lunar lander Sinus Medii",
+      "alternateQueries": [
+        "Surveyor 6 liftoff hop",
+        "Surveyor 6 Moon 1967",
+        "Surveyor 6 Sinus Medii LROC"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Surveyor was a robotic lander built to test landing, soil and cameras before Apollo; it was not 'discarded' by an Apollo crew. No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Surveyor 6 Lands on Moon",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/surveyor-6-lands-on-moon/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Surveyor 6 on the plains of Sinus Medii",
+        "publisher": "LROC (Arizona State University)",
+        "url": "https://www.lroc.asu.edu/posts/7",
+        "sourceType": "academic"
+      },
+      {
+        "title": "Surveyor 6",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Surveyor_6",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date shown in UTC; US sources use 9 November.",
+    "uncertainties": [
+      "The hop date and last-contact date come from general knowledge and a secondary table; they were not shown in the pages retrieved.",
+      "Hop distance is not stated because sources vary."
+    ]
+  },
+  {
+    "id": "viking-1-lander",
+    "name": "Viking 1 Lander",
+    "shortName": "Viking 1",
+    "location": "Mars",
+    "artifactType": "Lander",
+    "missionName": "Viking program",
+    "missionAgency": "NASA",
+    "launchDate": "1975-08-20",
+    "landingDate": "1976-07-20",
+    "missionEndDate": "1982-11-11",
+    "lastContactDate": "1982-11-11",
+    "status": "communication_lost",
+    "statusDescription": "On 11 November 1982 a faulty command from Earth overwrote antenna-pointing data, and contact was lost. JPL announced in April 1983 that attempts to restore contact had ended.",
+    "landingSite": "Chryse Planitia (western slopes)",
+    "description": "The first successful long-term lander on Mars, powered by a radioisotope generator. It was later named the Thomas Mutch Memorial Station.",
+    "missionPurpose": "To photograph Mars from the surface, study its weather and soil, and test the ground for signs of life.",
+    "missionStory": "Viking 1 landed on 20 July 1976 and sent the first picture taken from the surface of Mars. It was designed to last about 90 days, but worked for more than six years. In 2006 NASA's Mars Reconnaissance Orbiter photographed it on the surface.",
+    "scientificLegacy": [
+      {
+        "title": "Long-term weather record",
+        "explanation": "Years of readings on temperature, pressure and wind gave the first long record of Martian weather."
+      },
+      {
+        "title": "A first test for life on Mars",
+        "explanation": "Its experiments looked for biological activity; results were ambiguous and still debated, which shaped the design of later missions."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1975-08-20",
+        "title": "Launch",
+        "description": "Viking 1 launches on a Titan IIIE rocket."
+      },
+      {
+        "date": "1976-07-20",
+        "title": "Landing",
+        "description": "The lander touches down at Chryse Planitia."
+      },
+      {
+        "date": "1982-11-11",
+        "title": "Contact lost",
+        "description": "A faulty command ends communications."
+      },
+      {
+        "date": "1983-04-12",
+        "title": "Recovery attempts end",
+        "description": "JPL announces that contact cannot be restored."
+      }
+    ],
+    "media": {
+      "searchQuery": "Viking 1 lander Chryse Planitia",
+      "alternateQueries": [
+        "Viking 1 first Mars surface image",
+        "Viking 1 Thomas Mutch Memorial Station",
+        "Viking lander Mars 1976"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "Viking 1 lander has been imaged on Mars by Mars Reconnaissance Orbiter (Dec 2006). No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Viking 1",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/?p=106445",
+        "sourceType": "official"
+      },
+      {
+        "title": "Attempts to Communicate to Viking Lander 1 Concluded",
+        "publisher": "NASA/JPL",
+        "url": "https://www.jpl.nasa.gov/news/attempts-to-communicate-to-viking-lander-1-concluded/",
+        "sourceType": "official"
+      },
+      {
+        "title": "Viking 1",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Viking_1",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "NASA states the lander stopped operating on 11 November 1982 after a faulty command.",
+    "uncertainties": [
+      "Most Viking science results on life detection remain debated; this record does not claim a conclusion.",
+      "Some sources give 13 November 1982 for last contact; NASA science pages say 11 November.",
+      "The coordinates of the landing site differ among sources and are not given."
+    ]
+  },
+  {
+    "id": "viking-2-lander",
+    "name": "Viking 2 Lander",
+    "shortName": "Viking 2",
+    "location": "Mars",
+    "artifactType": "Lander",
+    "missionName": "Viking program",
+    "missionAgency": "NASA",
+    "launchDate": "1975-09-09",
+    "landingDate": "1976-09-03",
+    "missionEndDate": "1980-04-11",
+    "lastContactDate": "1980-04-11",
+    "status": "mission_ended",
+    "statusDescription": "The lander stopped operating in April 1980 (date from general knowledge; the cause is not confirmed here).",
+    "landingSite": "Utopia Planitia",
+    "description": "The second Viking lander, sent to a northern plain at a higher latitude than Viking 1.",
+    "missionPurpose": "To study a different Martian region with the same instruments as Viking 1, including weather, soil and life-detection tests.",
+    "missionStory": "Viking 2 landed on 3 September 1976. It sent images across seasons, including frost on the ground in winter. Together with Viking 1 it formed Mars' first two-station weather network.",
+    "scientificLegacy": [
+      {
+        "title": "Seasonal change at the surface",
+        "explanation": "Repeat photos revealed frost and seasonal changes, showing Mars is an active place."
+      },
+      {
+        "title": "Two sites instead of one",
+        "explanation": "Having two landing sites let scientists compare regions rather than rely on a single place."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1975-09-09",
+        "title": "Launch",
+        "description": "Viking 2 launches."
+      },
+      {
+        "date": "1976-09-03",
+        "title": "Landing",
+        "description": "The lander touches down in Utopia Planitia."
+      },
+      {
+        "date": "1980-04-11",
+        "title": "Operations end",
+        "description": "The lander is shut down (date from general knowledge)."
+      }
+    ],
+    "media": {
+      "searchQuery": "Viking 2 lander Utopia Planitia",
+      "alternateQueries": [
+        "Viking 2 Mars frost",
+        "Viking 2 lander surface image",
+        "Viking lander Utopia Planitia"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Viking lander model",
+        "publisher": "NASA Science",
+        "url": "https://science.nasa.gov/resource/viking-lander-model",
+        "sourceType": "official"
+      },
+      {
+        "title": "Viking 2",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Viking_2",
+        "sourceType": "reference"
+      },
+      {
+        "title": "Viking 2 landing site",
+        "publisher": "NASA NSSDC (mirrored at University of Washington)",
+        "url": "https://atmos.uw.edu/~mars/viking/mission/viking-williams-nssdc-revised.html",
+        "sourceType": "academic"
+      }
+    ],
+    "dateNotes": "Landing date is UTC.",
+    "uncertainties": [
+      "Most Viking science results on life detection remain debated; this record does not claim a conclusion.",
+      "The end date 1980-04-11 and its cause were not confirmed in a retrieved NASA page.",
+      "Frost on the ground is from general knowledge."
+    ]
+  },
+  {
+    "id": "sojourner-rover",
+    "name": "Sojourner Rover",
+    "shortName": "Sojourner",
+    "location": "Mars",
+    "artifactType": "Rover",
+    "missionName": "Mars Pathfinder",
+    "missionAgency": "NASA",
+    "launchDate": "1996-12-04",
+    "landingDate": "1997-07-04",
+    "missionEndDate": "1997-09-27",
+    "lastContactDate": "1997-09-27",
+    "status": "communication_lost",
+    "statusDescription": "The Pathfinder lander stopped sending signals after 27 September 1997. Sojourner depended on the lander to talk to Earth, so its mission ended too.",
+    "landingSite": "Ares Vallis, Chryse Planitia (the lander was named Carl Sagan Memorial Station)",
+    "description": "A microwave-oven-sized, six-wheeled rover and the first wheeled vehicle to drive on Mars.",
+    "missionPurpose": "To prove that a small, low-cost rover could drive and analyze rocks on Mars.",
+    "missionStory": "Sojourner rolled off the Pathfinder lander on 6 July 1997. It used a small instrument to measure the chemistry of rocks nicknamed Barnacle Bill and Yogi. It was designed for about a week but operated for many weeks.",
+    "scientificLegacy": [
+      {
+        "title": "Rovers work on Mars",
+        "explanation": "Sojourner showed that small rovers can drive, take measurements and survive on the surface, paving the way for Spirit, Opportunity and later rovers."
+      },
+      {
+        "title": "Rock chemistry from a first rover",
+        "explanation": "Its measurements gave scientists a first on-the-spot look at Martian rocks."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "1996-12-04",
+        "title": "Launch",
+        "description": "Mars Pathfinder launches with Sojourner."
+      },
+      {
+        "date": "1997-07-04",
+        "title": "Landing",
+        "description": "Pathfinder lands in Ares Vallis."
+      },
+      {
+        "date": "1997-07-06",
+        "title": "Rover rolls out",
+        "description": "Sojourner begins driving on Mars."
+      },
+      {
+        "date": "1997-09-27",
+        "title": "Last signal",
+        "description": "The final data signal from Pathfinder is received."
+      }
+    ],
+    "media": {
+      "searchQuery": "Sojourner rover Mars Pathfinder",
+      "alternateQueries": [
+        "Sojourner rover Yogi rock",
+        "Mars Pathfinder Carl Sagan Memorial Station",
+        "Sojourner APXS Barnacle Bill"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Sojourner's First Images From Mars",
+        "publisher": "NASA/JPL",
+        "url": "https://www.jpl.nasa.gov/images/sojourners-first-images-from-mars",
+        "sourceType": "official"
+      },
+      {
+        "title": "Six Wheels on the Soil",
+        "publisher": "NASA/JPL",
+        "url": "https://www.jpl.nasa.gov/images/pia04314-six-wheels-on-the-soil",
+        "sourceType": "official"
+      },
+      {
+        "title": "Sojourner (rover)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Sojourner_(rover)",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing date is the Pathfinder landing date in UTC.",
+    "uncertainties": [
+      "Dates for the rover roll-off and the last signal come from general knowledge; the JPL pages retrieved only show images and captions.",
+      "Rock names are from general knowledge.",
+      "NASA's formal end of mission date was not checked."
+    ]
+  },
+  {
+    "id": "spirit-rover",
+    "name": "Spirit Rover",
+    "shortName": "Spirit",
+    "location": "Mars",
+    "artifactType": "Rover",
+    "missionName": "Mars Exploration Rover",
+    "missionAgency": "NASA",
+    "launchDate": "2003-06-10",
+    "landingDate": "2004-01-04",
+    "missionEndDate": "2011-05-25",
+    "lastContactDate": "2010-03-22",
+    "status": "communication_lost",
+    "statusDescription": "Spirit's last contact was on 22 March 2010. NASA kept trying to reach it until May 2011, when the mission was declared over.",
+    "landingSite": "Gusev Crater, Columbia Hills",
+    "description": "One of two identical NASA rovers. Spirit is best known for finding signs of ancient hot-spring-like conditions.",
+    "missionPurpose": "To look for evidence that water once shaped the Martian surface.",
+    "missionStory": "Spirit landed on 4 January 2004. In April 2009 it got stuck in soft soil and became a stationary science platform. Sources say that it likely lost power during a cold winter. NASA officially ended contact efforts on 25 May 2011.",
+    "scientificLegacy": [
+      {
+        "title": "Past water at Gusev",
+        "explanation": "Spirit found minerals that formed in the presence of water, hot springs or steam vents."
+      },
+      {
+        "title": "A strong overachiever",
+        "explanation": "It was planned for 90 sols and operated for about 2,210 sols."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2003-06-10",
+        "title": "Launch",
+        "description": "Spirit launches."
+      },
+      {
+        "date": "2004-01-04",
+        "title": "Landing",
+        "description": "Spirit lands in Gusev Crater."
+      },
+      {
+        "date": "2010-03-22",
+        "title": "Last contact",
+        "description": "NASA's last communication with Spirit."
+      },
+      {
+        "date": "2011-05-25",
+        "title": "Mission declared over",
+        "description": "NASA ends its contact efforts."
+      }
+    ],
+    "media": {
+      "searchQuery": "Spirit rover Mars Exploration Rover Gusev Crater",
+      "alternateQueries": [
+        "Spirit rover Home Plate",
+        "Spirit rover Columbia Hills",
+        "Mars Exploration Rover Spirit self portrait"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Mars Exploration Rovers Update: NASA Ends Spirit Mission",
+        "publisher": "The Planetary Society",
+        "url": "https://www.planetary.org/articles/05-26-mer-update",
+        "sourceType": "nonprofit"
+      },
+      {
+        "title": "Spirit (rover)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Spirit_(rover)",
+        "sourceType": "reference"
+      },
+      {
+        "title": "Mars Exploration Rovers (NSSDCA)",
+        "publisher": "NASA Space Science Data Coordinated Archive",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2003-027A",
+        "sourceType": "official"
+      }
+    ],
+    "dateNotes": "Reports vary on 24 vs 25 May 2011 for the end announcement; 25 May 2011 is used.",
+    "uncertainties": [
+      "No NASA or JPL page was opened for Spirit in this pass; the sources include a nonprofit and a reference page.",
+      "The NSSDCA URL is built from the COSPAR ID 2003-027A and was not opened.",
+      "Spirit's science findings (hot springs, steam vents) are from general knowledge, not from the pages retrieved."
+    ]
+  },
+  {
+    "id": "opportunity-rover",
+    "name": "Opportunity Rover",
+    "shortName": "Opportunity",
+    "location": "Mars",
+    "artifactType": "Rover",
+    "missionName": "Mars Exploration Rover",
+    "missionAgency": "NASA",
+    "launchDate": "2003-07-07",
+    "landingDate": "2004-01-25",
+    "missionEndDate": "2019-02-13",
+    "lastContactDate": "2018-06-10",
+    "status": "communication_lost",
+    "statusDescription": "A global dust storm blocked the sunlight Opportunity needed. Its last contact was on 10 June 2018. After more than 1,000 recovery attempts, NASA declared the mission complete on 13 February 2019.",
+    "landingSite": "Meridiani Planum, later Endeavour Crater and Perseverance Valley",
+    "description": "The second of the twin Mars Exploration Rovers. It drove farther than any other rover and lasted nearly 15 years.",
+    "missionPurpose": "To look for rocks and soils that show Mars once had liquid water.",
+    "missionStory": "Opportunity landed on 25 January 2004 (24 January in US time). It was planned to last about 90 days. It eventually drove more than 28 miles, and ended in Perseverance Valley. NASA declared the mission complete after the rover stayed silent following the storm.",
+    "scientificLegacy": [
+      {
+        "title": "Past water in Meridiani",
+        "explanation": "Opportunity's discoveries helped show that Mars once had liquid water."
+      },
+      {
+        "title": "A record-setting lifespan",
+        "explanation": "It operated about 60 times longer than planned and set a distance record for driving on another world."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2003-07-07",
+        "title": "Launch",
+        "description": "Opportunity launches."
+      },
+      {
+        "date": "2004-01-25",
+        "title": "Landing",
+        "description": "Opportunity lands in Meridiani Planum."
+      },
+      {
+        "date": "2018-06-10",
+        "title": "Last contact",
+        "description": "Last signal received during the dust storm (date from general knowledge)."
+      },
+      {
+        "date": "2019-02-13",
+        "title": "Mission complete",
+        "description": "NASA ends the Opportunity and Mars Exploration Rover mission."
+      }
+    ],
+    "media": {
+      "searchQuery": "Opportunity rover Mars Exploration Rover Meridiani Planum",
+      "alternateQueries": [
+        "Opportunity rover Endeavour Crater",
+        "Opportunity rover self portrait",
+        "Opportunity rover Perseverance Valley"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Taking a Look Back at Opportunity's Record-Setting Mission",
+        "publisher": "NASA",
+        "url": "https://www.nasa.gov/image-article/taking-look-back-opportunitys-record-setting-mission",
+        "sourceType": "official"
+      },
+      {
+        "title": "NASA declares Opportunity rover dead after 15 years on Mars",
+        "publisher": "Spaceflight Now",
+        "url": "https://spaceflightnow.com/2019/02/13/nasa-declares-opportunity-rover-dead-after-15-years-on-mars/",
+        "sourceType": "news"
+      },
+      {
+        "title": "Opportunity (rover)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Opportunity_(rover)",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Landing is 24 January 2004 in US time; 25 January UTC is used.",
+    "uncertainties": [
+      "The 10 June 2018 last-contact date is from general knowledge; the pages retrieved say contact was lost during the dust storm and recovery attempts lasted eight months.",
+      "Distance (more than 28 miles) is from a news report quoting NASA/JPL."
+    ]
+  },
+  {
+    "id": "phoenix-lander",
+    "name": "Phoenix Lander",
+    "shortName": "Phoenix",
+    "location": "Mars",
+    "artifactType": "Lander",
+    "missionName": "Phoenix Mars Mission",
+    "missionAgency": "NASA",
+    "launchDate": "2007-08-04",
+    "landingDate": "2008-05-25",
+    "missionEndDate": "2008-11-02",
+    "lastContactDate": "2008-11-02",
+    "status": "communication_lost",
+    "statusDescription": "Phoenix was solar-powered and stopped responding as the arctic winter darkness arrived in November 2008. NASA later confirmed no signal after attempts in 2010.",
+    "landingSite": "Green Valley, Vastitas Borealis (northern plains)",
+    "description": "A stationary lander with a robotic arm that dug into the soil of Mars' north polar region.",
+    "missionPurpose": "To touch and study ice and soil in the Martian arctic and judge whether the area could be habitable.",
+    "missionStory": "Phoenix landed on 25 May 2008. Its arm dug trenches and exposed bright material that later vanished, consistent with water ice. NASA ended efforts to contact it in May 2010.",
+    "scientificLegacy": [
+      {
+        "title": "Water ice confirmed",
+        "explanation": "Phoenix's samples confirmed the presence of water ice just below the surface."
+      },
+      {
+        "title": "Chemistry of the soil",
+        "explanation": "It also found perchlorate salts, a discovery that affects how scientists think about life-detection tests on Mars."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2007-08-04",
+        "title": "Launch",
+        "description": "Phoenix launches."
+      },
+      {
+        "date": "2008-05-25",
+        "title": "Landing",
+        "description": "Phoenix lands in the northern plains."
+      },
+      {
+        "date": "2008-11-02",
+        "title": "Last contact",
+        "description": "The lander's last signal (date from general knowledge)."
+      },
+      {
+        "date": "2010-05-24",
+        "title": "Recovery efforts end",
+        "description": "NASA reports that it could not hear from the lander."
+      }
+    ],
+    "media": {
+      "searchQuery": "Phoenix Mars lander arctic",
+      "alternateQueries": [
+        "Phoenix lander Green Valley ice",
+        "Phoenix lander robotic arm trench",
+        "Phoenix Mars lander sundial"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "Phoenix (spacecraft)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Phoenix_(spacecraft)",
+        "sourceType": "reference"
+      },
+      {
+        "title": "NASA's Phoenix Mars Lander officially kaput",
+        "publisher": "The Christian Science Monitor",
+        "url": "https://proof.csmonitor.com/Science/2010/0524/NASA-s-Phoenix-Mars-Lander-officially-kaput",
+        "sourceType": "news"
+      },
+      {
+        "title": "Phoenix (NSSDCA master catalog)",
+        "publisher": "NASA Space Science Data Coordinated Archive",
+        "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=2007-034A",
+        "sourceType": "official"
+      }
+    ],
+    "dateNotes": "Landing date is UTC.",
+    "uncertainties": [
+      "No NASA/JPL page was opened for Phoenix in this pass. Add an official NASA mission page before publication.",
+      "The NSSDCA URL is built from the COSPAR ID 2007-034A and was not opened.",
+      "Discovery details (ice, perchlorates) are from general knowledge."
+    ]
+  },
+  {
+    "id": "insight-lander",
+    "name": "InSight Lander",
+    "shortName": "InSight",
+    "location": "Mars",
+    "artifactType": "Lander",
+    "missionName": "InSight",
+    "missionAgency": "NASA",
+    "launchDate": "2018-05-05",
+    "landingDate": "2018-11-26",
+    "missionEndDate": "2022-12-21",
+    "lastContactDate": "2022-12-15",
+    "status": "communication_lost",
+    "statusDescription": "Dust coated InSight's solar panels and its power ran out. Its last contact was 15 December 2022. NASA declared the mission over on 21 December 2022 after two missed contacts.",
+    "landingSite": "Elysium Planitia",
+    "description": "A stationary lander built to listen to Mars' interior with a seismometer.",
+    "missionPurpose": "To measure marsquakes and heat to learn how Mars is built inside.",
+    "missionStory": "InSight landed on 26 November 2018. It detected more than 1,300 marsquakes, including a magnitude 4.7 quake in May 2022. It also caught meteoroid impacts and sounds of Martian wind. NASA's final selfie from the lander shows it covered in dust.",
+    "scientificLegacy": [
+      {
+        "title": "Looking inside another planet",
+        "explanation": "Seismic data revealed how Mars' interior layers are built."
+      },
+      {
+        "title": "A new type of record",
+        "explanation": "Its quakes and impact signals gave scientists a catalog to compare with Earth and the Moon."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2018-05-05",
+        "title": "Launch",
+        "description": "InSight launches (date from general knowledge)."
+      },
+      {
+        "date": "2018-11-26",
+        "title": "Landing",
+        "description": "InSight lands on Elysium Planitia."
+      },
+      {
+        "date": "2022-12-15",
+        "title": "Last contact",
+        "description": "The lander's last communication with NASA."
+      },
+      {
+        "date": "2022-12-21",
+        "title": "Mission ended",
+        "description": "NASA announces the end of the InSight mission."
+      }
+    ],
+    "media": {
+      "searchQuery": "InSight lander Mars seismometer",
+      "alternateQueries": [
+        "InSight lander final selfie",
+        "InSight Mars lander dust solar panels",
+        "InSight marsquake seismometer"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "NASA's InSight lander news",
+        "publisher": "NASA",
+        "url": "https://www.nasa.gov/?p=437895",
+        "sourceType": "official"
+      },
+      {
+        "title": "InSight Principal Investigator talks Mars lander's final days",
+        "publisher": "NASASpaceflight",
+        "url": "https://www.nasaspaceflight.com/2023/01/insight-final-days/",
+        "sourceType": "news"
+      },
+      {
+        "title": "InSight",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/InSight",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "Dates are in UTC where known.",
+    "uncertainties": [
+      "The 1,300-quake figure comes from a non-NASA page that cites NASA's mission summary.",
+      "The launch and landing dates are from general knowledge."
+    ]
+  },
+  {
+    "id": "ingenuity-mars-helicopter",
+    "name": "Ingenuity Mars Helicopter",
+    "shortName": "Ingenuity",
+    "location": "Mars",
+    "artifactType": "Helicopter",
+    "missionName": "Mars 2020 (Perseverance) technology demonstration",
+    "missionAgency": "NASA",
+    "launchDate": "2020-07-30",
+    "landingDate": "2021-02-18",
+    "missionEndDate": "2024-01-25",
+    "lastContactDate": "2024-01-18",
+    "status": "mission_ended",
+    "statusDescription": "NASA ended the mission in January 2024 after the helicopter's rotor blades were damaged in its 72nd flight. It remains in Jezero Crater. Its current communication status is not stated here.",
+    "landingSite": "Jezero Crater (Wright Brothers Field)",
+    "description": "A small, solar-powered helicopter that rode to Mars on the Perseverance rover. It became the first aircraft to fly under power on another planet.",
+    "missionPurpose": "To test whether powered flight was possible in Mars' thin atmosphere.",
+    "missionStory": "Ingenuity first flew on 19 April 2021. It was planned for five flights, but made 72, and scouted terrain for Perseverance. NASA announced the end of the mission on 25 January 2024.",
+    "scientificLegacy": [
+      {
+        "title": "Flight on another world",
+        "explanation": "Ingenuity proved that controlled flight is possible on Mars and opened the way for future aircraft."
+      },
+      {
+        "title": "Scouting for rovers",
+        "explanation": "Its images of terrain helped Perseverance plan safer routes."
+      }
+    ],
+    "timeline": [
+      {
+        "date": "2020-07-30",
+        "title": "Launch",
+        "description": "Ingenuity launches with Perseverance (date from general knowledge)."
+      },
+      {
+        "date": "2021-02-18",
+        "title": "Landing",
+        "description": "Perseverance and Ingenuity land in Jezero Crater."
+      },
+      {
+        "date": "2021-04-19",
+        "title": "First flight",
+        "description": "Ingenuity makes the first powered, controlled flight on another planet."
+      },
+      {
+        "date": "2024-01-25",
+        "title": "Mission ends",
+        "description": "NASA ends the mission after 72 flights."
+      }
+    ],
+    "media": {
+      "searchQuery": "Ingenuity Mars helicopter Jezero Crater",
+      "alternateQueries": [
+        "Ingenuity helicopter flight Mars",
+        "Ingenuity Wright Brothers Field",
+        "Ingenuity helicopter selfie"
+      ],
+      "mediaType": "image",
+      "preferredNasaId": null,
+      "verifiedMediaUrl": null,
+      "mediaVerificationStatus": "search_required",
+      "mediaNotes": "No NASA ID or media URL has been verified. The NASA Image and Video Library API could not be reached from the research session, so no asset was confirmed. The frontend should call https://images-api.nasa.gov/search?q={searchQuery}&media_type=image, check the returned title and description against this artifact, and read nasa_id, center, photographer, description, keywords and date_created from collection.items[].data[0]. Do not trust a result only because it appears first."
+    },
+    "sources": [
+      {
+        "title": "NASA ends Mars helicopter Ingenuity mission after 72 flights",
+        "publisher": "Yahoo News (wire report)",
+        "url": "https://news.yahoo.com/nasa-ends-mars-helicopter-ingenuity-171641833.html",
+        "sourceType": "news"
+      },
+      {
+        "title": "Ingenuity's mission ends after 72 flights",
+        "publisher": "NASASpaceflight",
+        "url": "https://nasaspaceflight.com/2024/01/ingenuity-final-flight",
+        "sourceType": "news"
+      },
+      {
+        "title": "Ingenuity (helicopter)",
+        "publisher": "Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/Ingenuity_(helicopter)",
+        "sourceType": "reference"
+      }
+    ],
+    "dateNotes": "The landing date is the date Perseverance landed with Ingenuity attached.",
+    "uncertainties": [
+      "No NASA or JPL page was opened for Ingenuity in this pass; add an official NASA source.",
+      "The last-flight date 2024-01-18 is from general knowledge.",
+      "Current signal status was not checked."
+    ]
+  }
+]
