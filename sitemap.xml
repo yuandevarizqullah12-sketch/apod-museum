@@ -2,17 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://apod-museum.vercel.app/</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://apod-museum.vercel.app/archive.html</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://apod-museum.vercel.app/collections.html</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://apod-museum.vercel.app/on-this-day.html</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
   <url>
     <loc>https://apod-museum.vercel.app/forgotten-artifacts.html</loc>
+    <lastmod>2026-11-05</lastmod>
   </url>
 </urlset>

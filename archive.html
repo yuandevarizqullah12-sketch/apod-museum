@@ -1,15 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Archive · APOD MUSEUM</title><meta name="description" content="Explore the Universe, One Day at a Time.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap"></noscript>
-<link rel="stylesheet" href="css/style.css"></head><body>
-<header class="top"><div class="wrap"><a class="brand" href="index.html">APOD MUSEUM</a>
-<button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Main"><a href="index.html">Home</a><a href="archive.html">Archive</a><a href="collections.html">Collections</a><a href="on-this-day.html">On This Day</a><a href="forgotten-artifacts.html">Forgotten Artifacts</a></nav></div></header>
-<main>
-<section class="block"><div class="wrap"><div class="head"><div><p class="eyebrow">June 16, 1995 – today</p><h1 style="font-size:clamp(2rem,4vw,3rem)">Archive</h1></div></div>
-<div class="ctl"><label>Open a date<input type="date" id="date" min="1995-06-16"></label><label>Year<select id="year"></select></label><label>Month<select id="month"></select></label><button class="btn" id="go">Browse</button><button class="btn" id="latest">Latest</button></div>
-<div id="grid" class="grid" aria-live="polite"></div><div class="more"><button class="btn" id="more" hidden>Load more</button></div></div></section>
-</main>
-<footer><div class="wrap">Astronomy Picture of the Day courtesy of NASA. Supplementary text from Wikipedia (CC BY-SA). Media credits belong to their original creators.</div></footer>
-<script type="module" src="js/archive.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Archive · APOD MUSEUM</title>
+  <meta name="description" content="Browse every Astronomy Picture of the Day since June 16, 1995. Explore the Universe, One Day at a Time.">
+  <meta name="theme-color" content="#0b0d17">
+  <link rel="canonical" href="https://apod-museum.vercel.app/archive.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Archive · APOD MUSEUM">
+  <meta property="og:description" content="Browse every Astronomy Picture of the Day since 1995.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap"></noscript>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/archive.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html">APOD MUSEUM</a>
+      <button id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="archive.html" aria-current="page">Archive</a>
+        <a href="collections.html">Collections</a>
+        <a href="on-this-day.html">On This Day</a>
+        <a href="forgotten-artifacts.html">Forgotten Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="block" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow">June 16, 1995 – today</p>
+            <h1 id="page-title" class="title-sm">Archive</h1>
+          </div>
+        </div>
+
+        <form class="ctl" id="controls" aria-label="Browse the archive">
+          <label>Open a date
+            <input type="date" id="date" min="1995-06-16">
+          </label>
+          <label>Year
+            <select id="year"></select>
+          </label>
+          <label>Month
+            <select id="month"></select>
+          </label>
+          <button class="btn" id="go" type="submit">Browse</button>
+          <button class="btn" id="latest" type="button">Latest</button>
+        </form>
+
+        <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+        <div id="grid" class="grid" aria-live="polite"></div>
+
+        <div class="more">
+          <button class="btn" id="more" type="button" hidden>Load more</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Astronomy Picture of the Day courtesy of NASA. Supplementary text from Wikipedia (CC BY-SA). Media credits belong to their original creators.
+    </div>
+  </footer>
+</body>
+</html>

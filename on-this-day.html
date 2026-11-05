@@ -1,15 +1,85 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>On This Day · APOD MUSEUM</title><meta name="description" content="Explore the Universe, One Day at a Time.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap"></noscript>
-<link rel="stylesheet" href="css/style.css"></head><body>
-<header class="top"><div class="wrap"><a class="brand" href="index.html">APOD MUSEUM</a>
-<button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
-<nav id="nav" aria-label="Main"><a href="index.html">Home</a><a href="archive.html">Archive</a><a href="collections.html">Collections</a><a href="on-this-day.html">On This Day</a><a href="forgotten-artifacts.html">Forgotten Artifacts</a></nav></div></header>
-<main>
-<section class="block"><div class="wrap"><div class="head"><div><p class="eyebrow">Same date, different years</p><h1 style="font-size:clamp(2rem,4vw,3rem)">On This Day in Space</h1></div></div>
-<div class="ctl"><label>Month<select id="month"></select></label><label>Day<select id="day"></select></label><button class="btn primary" id="show">Show entries</button><button class="btn" id="rand">Random Discovery</button></div>
-<div id="grid" class="grid" aria-live="polite"></div></div></section>
-</main>
-<footer><div class="wrap">Astronomy Picture of the Day courtesy of NASA. Supplementary text from Wikipedia (CC BY-SA). Media credits belong to their original creators.</div></footer>
-<script type="module" src="js/on-this-day.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>On This Day · APOD MUSEUM</title>
+  <meta name="description" content="See Astronomy Pictures of the Day from the same calendar date across different years. Explore the Universe, One Day at a Time.">
+  <meta name="theme-color" content="#0b0d17">
+  <link rel="canonical" href="https://apod-museum.vercel.app/on-this-day.html">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="APOD MUSEUM">
+  <meta property="og:title" content="On This Day in Space · APOD MUSEUM">
+  <meta property="og:description" content="Astronomy Pictures of the Day from the same date, across different years.">
+  <meta property="og:url" content="https://apod-museum.vercel.app/on-this-day.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600&display=swap"></noscript>
+
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="js/on-this-day.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+
+  <header class="top">
+    <div class="wrap">
+      <a class="brand" href="index.html">APOD MUSEUM</a>
+      <button id="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+      <nav id="nav" aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="archive.html">Archive</a>
+        <a href="collections.html">Collections</a>
+        <a href="on-this-day.html" aria-current="page">On This Day</a>
+        <a href="forgotten-artifacts.html">Forgotten Artifacts</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="block" aria-labelledby="page-title">
+      <div class="wrap">
+        <div class="head">
+          <div>
+            <p class="eyebrow">Same date, different years</p>
+            <h1 id="page-title" class="title-sm">On This Day in Space</h1>
+          </div>
+        </div>
+
+        <form class="ctl" id="controls" aria-label="Choose a date">
+          <label>Month
+            <select id="month"></select>
+          </label>
+          <label>Day
+            <select id="day"></select>
+          </label>
+          <button class="btn primary" id="show" type="submit">Show entries</button>
+          <button class="btn" id="rand" type="button">Random Discovery</button>
+        </form>
+
+        <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+        <div id="grid" class="grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Astronomy Picture of the Day courtesy of NASA. Supplementary text from Wikipedia (CC BY-SA). Media credits belong to their original creators.
+    </div>
+  </footer>
+
+  <noscript>
+    <p class="state">This page needs JavaScript to load entries.</p>
+  </noscript>
+</body>
+</html>
