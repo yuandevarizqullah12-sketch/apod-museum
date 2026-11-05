@@ -1,30 +1,63 @@
-import { getPage, getRange, FIRST, today } from './api.js';
+import { getRange, hasMore, isValidDate, daysInMonth, FIRST, today } from './api.js';
 import { $, tile, msg } from './app.js';
-const grid = $('#grid'), more = $('#more'), now = new Date();
+const grid = $('#grid'), more = $('#more');
 const M = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-$('#year').innerHTML = '<option value="">Year</option>' + Array.from({ length: now.getFullYear() - 1994 }, (_, i) => `<option>${now.getFullYear() - i}</option>`).join('');
-$('#month').innerHTML = M.map((m, i) => `<option value="${String(i + 1).padStart(2, '0')}">${m}</option>`).join('');
+const p2 = v => String(v).padStart(2, '0');
+const thisYear = +today().slice(0, 4);
+
+$('#year').innerHTML = '<option value="">Year</option>' + Array.from({ length: thisYear - 1994 }, (_, i) => `<option>${thisYear - i}</option>`).join('');
+$('#month').innerHTML = '<option value="">Whole year</option>' + M.map((m, i) => `<option value="${p2(i + 1)}">${m}</option>`).join('');
+$('#month').value = '01'; // same default as before (January)
+$('#date').min = FIRST;
 $('#date').max = today();
-let mode = { type: 'latest' }, page = 1;
+
+// Archive state: which date span is browsed, which 25-day window is next, and which request is current.
+let span = { from: FIRST, to: today() }, page = 1, runId = 0, busy = false;
+const errBox = text => `<div data-err style="grid-column:1/-1">${msg(text, 'err')}</div>`;
+
 async function load(reset) {
-  if (reset) { page = 1; grid.innerHTML = msg('Loading…'); }
-  more.hidden = true;
+  if (busy && !reset) return;          // ignore repeated Load More clicks while a page is loading
+  const run = ++runId;                 // a newer Go/Latest click makes any older response stale
+  busy = true;
+  more.disabled = true;
+  grid.querySelectorAll('[data-err]').forEach(n => n.remove());
+  if (reset) { page = 1; more.hidden = true; grid.innerHTML = msg('Loading…'); }
   try {
-    let items;
-    if (mode.type === 'latest') items = await getPage(page, 25);
-    else { const last = new Date(mode.y, +mode.m, 0).getDate(); items = await getRange(`${mode.y}-${mode.m}-01`, `${mode.y}-${mode.m}-${last}`, page); }
+    const items = await getRange(span.from, span.to, page);
+    if (run !== runId) return;
     if (reset) grid.innerHTML = '';
     if (!items.length && reset) grid.innerHTML = msg('No entries found for this selection.');
     grid.insertAdjacentHTML('beforeend', items.map(tile).join(''));
-    more.hidden = items.length < 25;
-  } catch (e) { grid.innerHTML = msg(e.message, 'err'); }
+    more.hidden = !hasMore(span.from, span.to, page);
+  } catch (e) {
+    if (run !== runId) return;
+    if (reset) { grid.innerHTML = msg(e.message, 'err'); more.hidden = true; }
+    else { page--; grid.insertAdjacentHTML('beforeend', errBox(e.message)); more.hidden = false; } // keep loaded tiles; Load More retries the same window
+  } finally {
+    if (run === runId) { busy = false; more.disabled = false; }
+  }
 }
+
+const showError = text => { runId++; busy = false; more.hidden = true; grid.innerHTML = msg(text, 'err'); };
+
 $('#more').onclick = () => { page++; load(false); };
-$('#latest').onclick = () => { mode = { type: 'latest' }; load(true); };
+$('#latest').onclick = () => { span = { from: FIRST, to: today() }; load(true); };
+// Picking a year/month means "browse that period", so a leftover single date must not override it.
+$('#year').onchange = $('#month').onchange = () => { $('#date').value = ''; };
 $('#go').onclick = () => {
   const d = $('#date').value;
-  if (d) { if (d < FIRST || d > today()) return void (grid.innerHTML = msg('Pick a date from June 16, 1995 to today.', 'err')); location.href = 'detail.html?date=' + d; return; }
-  const y = $('#year').value; if (!y) return void (grid.innerHTML = msg('Choose a year and month, or a date.', 'err'));
-  mode = { type: 'month', y, m: $('#month').value }; load(true);
+  if (d) {
+    if (!isValidDate(d) || d < FIRST || d > today()) return showError('Pick a date from June 16, 1995 to today.');
+    location.href = 'detail.html?date=' + d;
+    return;
+  }
+  const y = $('#year').value;
+  if (!y) return showError('Choose a year (and optionally a month), or a date.');
+  const m = $('#month').value;           // '' = whole year
+  const from = `${y}-${m || '01'}-01`;
+  const to = m ? `${y}-${m}-${p2(daysInMonth(y, +m))}` : `${y}-12-31`;
+  if (to < FIRST || from > today()) return showError('There are no entries for that period yet.');
+  span = { from, to };                   // getRange clamps to June 16, 1995 … today
+  load(true);
 };
 load(true);
