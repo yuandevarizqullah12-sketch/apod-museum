@@ -1,123 +1,177 @@
+// Forgotten Artifacts page: landing, collection gallery, artifact detail, and event handling.
+// Data lives in artifact-data.js, media lookup in artifact-media.js (NASA first, Wikimedia Commons second).
 import { esc } from './api.js';
 import { $, msg } from './app.js';
-import { findMedia, getAssets, pickImage, pickVideo, pickPoster, getCaptions, detailsUrl } from './nasa-images.js';
+import { COLLECTIONS, loadArtifacts, artifactsIn, collectionKeyOf, asList, firstText, textOf, paragraphsOf, shorten, formatStatus } from './artifact-data.js';
+import { resolveImage, findVideo } from './artifact-media.js';
+import { getAssetUrls, pickImageUrl, pickVideoUrl, pickPosterUrl, getCaptionUrl } from './nasa-images.js';
+import { getCommonsThumbnail } from './commons-images.js';
 
-const DATA = 'data/artifacts.json';
-const COL = {
-  moon: { loc: 'Moon', title: 'The Moon', desc: "Explore the equipment and scientific instruments left behind by NASA's lunar missions.", img: 'assets/images/moon-640.webp' },
-  mars: { loc: 'Mars', title: 'Mars', desc: 'Discover the landers, rovers, and scientific equipment that explored the Red Planet.', img: 'assets/images/mars-640.webp' }
+const view = { artifacts: [], current: null, video: null };
+const root = $('#fa-root');
+const hero = $('#fa-head');
+const params = new URLSearchParams(location.search);
+const SOURCE_LABEL = { nasa: 'NASA', 'wikimedia-commons': 'Wikimedia Commons' };
+const MISSING_IMAGE_HANDLER = "this.onerror=null;this.replaceWith(Object.assign(document.createElement('div'),{className:'fa-noimg',role:'img',ariaLabel:'Image not available'}))";
+
+// ---- small rendering helpers
+const link = (url, text) => (/^https?:\/\//i.test(url) ? `<a href="${esc(url)}" rel="noopener">${esc(text || url)}</a>` : esc(text || url));
+const statusBadge = artifact => (artifact.status ? `<span class="fa-badge">Status: ${esc(formatStatus(artifact.status))}</span>` : '');
+const paragraphs = value => paragraphsOf(value).map(text => `<p>${esc(text)}</p>`).join('');
+const countLabel = count => `${count} ${count === 1 ? 'artifact' : 'artifacts'}`;
+const sourceItem = item => { if (typeof item === 'string') return link(item); const url = firstText(item, ['url', 'href', 'link']); return link(url, firstText(item, ['title', 'name', 'label', 'publisher']) || url); };
+const timelineItem = item => {
+  if (typeof item === 'string') return `<li><span class="e" style="grid-column:1/-1">${esc(item)}</span></li>`;
+  const date = firstText(item, ['date', 'year', 'time', 'when']);
+  const event = [firstText(item, ['title', 'event', 'label']), firstText(item, ['description', 'text'])].filter(Boolean).join(' — ');
+  return `<li><span class="d">${esc(date)}</span><span class="e">${esc(event)}</span></li>`;
 };
-let ALL = [], CUR = null;
-const root = $('#fa-root'), head = $('#fa-head'), q = new URLSearchParams(location.search);
-// ---- display adapters (the dataset itself is never modified)
-const arr = x => (Array.isArray(x) ? x : x == null || x === '' ? [] : [x]);
-const first = (o, ks) => { for (const k of ks) if (typeof o[k] === 'string' && o[k]) return o[k]; return ''; };
-const plain = it => (typeof it === 'string' ? it : first(it, ['text', 'description', 'event', 'title', 'label']) || Object.values(it).filter(v => typeof v === 'string').join(' — '));
-const para = x => arr(x).map(plain).flatMap(s => s.split(/\n+/)).filter(s => s.trim()).map(s => `<p>${esc(s)}</p>`).join('');
-const link = (u, t) => (/^https?:\/\//i.test(u) ? `<a href="${esc(u)}" rel="noopener">${esc(t || u)}</a>` : esc(t || u));
-const source = it => { if (typeof it === 'string') return /^https?:\/\//i.test(it) ? link(it) : esc(it); const u = first(it, ['url', 'href', 'link']), t = first(it, ['title', 'name', 'label', 'publisher']) || u; return link(u, t); };
-const badge = a => (a.status ? `<span class="fa-badge">Status: ${esc(a.status)}</span>` : '');
-const short = (s, n) => { s = String(s || ''); return s.length > n ? s.slice(0, n).replace(/\s\S*$/, '') + '…' : s; };
-const inCol = (all, k) => all.filter(a => a.location === COL[k].loc);
-const NOIMG = "this.onerror=null;this.replaceWith(Object.assign(document.createElement('div'),{className:'fa-noimg',role:'img',ariaLabel:'Image not available'}))";
+/** Attribution line for a media object: source, title, creator, license (linked), and the original page. */
+function attributionHtml(media) {
+  const parts = [`<strong>${esc(SOURCE_LABEL[media.source] || media.source)}</strong>`, esc(media.title)];
+  if (media.nasaId) parts.push('NASA ID ' + esc(media.nasaId));
+  for (const value of [media.creator, media.center, media.date && media.date.slice(0, 10)]) if (value) parts.push(esc(value));
+  if (media.licenseName) parts.push(media.licenseUrl ? link(media.licenseUrl, media.licenseName) : esc(media.licenseName));
+  parts.push(link(media.sourcePageUrl, media.source === 'nasa' ? 'Original on NASA Image and Video Library' : 'File page on Wikimedia Commons'));
+  return parts.join(' · ');
+}
 
-async function load() {
-  let r; try { r = await fetch(DATA); } catch { throw new Error('Could not load the artifact data (network error).'); }
-  if (r.status === 404) throw new Error(`The artifact data file ${DATA} was not found. Add the artifact dataset at that path.`);
-  if (!r.ok) throw new Error(`The artifact data could not be loaded (HTTP ${r.status}).`);
-  let d; try { d = await r.json(); } catch { throw new Error(`${DATA} is not valid JSON.`); }
-  if (!Array.isArray(d)) throw new Error(`${DATA} must be a JSON array of artifact records.`);
-  return d.filter(a => a && a.id && a.location);
-}
 // ---- landing
-function landing(all) {
-  root.innerHTML = `<div class="fa-doors">${Object.entries(COL).map(([k, c]) => { const n = inCol(all, k).length; return `<a class="fa-door" href="?collection=${k}"><img src="${c.img}" width="640" height="640" alt="" decoding="async" onerror="${NOIMG}"><div class="cap"><span class="n">${n} ${n === 1 ? 'artifact' : 'artifacts'}</span><h2>${esc(c.title)}</h2><p>${esc(c.desc)}</p><span class="go">Enter the collection →</span></div></a>`; }).join('')}</div>`;
+function renderLanding() {
+  root.innerHTML = `<div class="fa-doors">${Object.entries(COLLECTIONS).map(([key, collection]) => `<a class="fa-door" href="?collection=${key}"><img src="${collection.image}" width="640" height="640" alt="" decoding="async" onerror="${MISSING_IMAGE_HANDLER}"><div class="cap"><span class="n">${countLabel(artifactsIn(view.artifacts, key).length)}</span><h2>${esc(collection.title)}</h2><p>${esc(collection.description)}</p><span class="go">Enter the collection →</span></div></a>`).join('')}</div>`;
 }
-// ---- gallery thumbnails: search metadata only, visible cards first, at most 3 requests at a time
-const queue = []; let active = 0;
-const pump = () => { while (active < 3 && queue.length) { const { job } = queue.shift(); active++; job().finally(() => { active--; pump(); }); } };
-const enqueue = (job, pri) => { queue.push({ job, pri }); queue.sort((a, b) => a.pri - b.pri); pump(); };
-const note = (ph, text, retryId) => { ph.classList.remove('fa-skel'); ph.innerHTML = `<span class="fa-note">${esc(text)}</span>${retryId ? `<button type="button" class="fa-retry" data-retry="${esc(retryId)}">Retry image</button>` : ''}`; };
-async function loadThumb(a, ph) {
-  ph.classList.add('fa-skel'); ph.innerHTML = '<span class="fa-sr">Loading image</span>';
+
+// ---- collection gallery: text renders at once; images load in the background, visible cards first, at most 3 at a time
+const queue = [];
+let activeJobs = 0;
+function pumpQueue() {
+  while (activeJobs < 3 && queue.length) { const { job } = queue.shift(); activeJobs++; job().finally(() => { activeJobs--; pumpQueue(); }); }
+}
+const enqueue = (job, priority) => { queue.push({ job, priority }); queue.sort((a, b) => a.priority - b.priority); pumpQueue(); };
+
+function showLoading(frame, text, visible) {
+  frame.classList.add('fa-skel');
+  frame.innerHTML = visible ? `<span class="fa-note">${esc(text)}</span>` : `<span class="fa-sr">${esc(text)}</span>`;
+}
+function showNote(frame, text, retryId) {
+  frame.classList.remove('fa-skel');
+  frame.innerHTML = `<span class="fa-note">${esc(text)}</span>${retryId ? `<button type="button" class="fa-retry" data-action="retry-thumbnail" data-id="${esc(retryId)}">Retry image</button>` : ''}`;
+}
+function showThumbnail(frame, artifact, media) {
+  const image = new Image();
+  image.width = 640; image.height = 480; image.decoding = 'async'; image.loading = 'lazy';
+  image.alt = `${artifact.name}: ${SOURCE_LABEL[media.source]} image “${media.title}”`;
+  image.addEventListener('load', () => frame.classList.remove('fa-skel'));
+  image.addEventListener('error', () => showNote(frame, 'The image could not be displayed.', artifact.id));
+  image.src = media.imageUrl;
+  const tag = document.createElement('span');
+  tag.className = 'fa-src'; tag.textContent = SOURCE_LABEL[media.source]; tag.title = `Image source: ${SOURCE_LABEL[media.source]}`;
+  frame.replaceChildren(image, tag);
+}
+async function loadThumbnail(artifact, frame) {
+  showLoading(frame, 'Loading image', false);
   try {
-    const h = await findMedia(a, 'image');
-    if (!h || !h.thumb) return note(ph, h ? 'No preview image available.' : 'No verified NASA image found.');
-    const im = new Image(); im.width = 640; im.height = 480; im.decoding = 'async'; im.loading = 'lazy'; im.alt = `${a.name || a.shortName}: NASA image “${h.title}”`;
-    im.addEventListener('load', () => ph.classList.remove('fa-skel')); im.addEventListener('error', () => note(ph, 'The NASA preview could not be displayed.'));
-    im.src = h.thumb; ph.replaceChildren(im);
-  } catch { note(ph, 'NASA media is unavailable right now.', a.id); }
+    const result = await resolveImage(artifact, { onStage: text => showLoading(frame, text, true) });
+    if (result.status === 'ok') showThumbnail(frame, artifact, result.media);
+    else showNote(frame, result.message, result.status === 'error' ? artifact.id : '');
+  } catch (error) { console.warn('[forgotten-artifacts] thumbnail failed', artifact.id, error); showNote(frame, 'Image loading failed. Try again.', artifact.id); }
 }
-const seen = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { seen.unobserve(e.target); enqueue(e.target.__load, 0); } }), { rootMargin: '300px' }) : null;
-function collection(all, k) {
-  const c = COL[k], items = inCol(all, k); head.hidden = true; document.title = c.title + ' · Forgotten Artifacts · NASA APOD MUSEUM';
+const frameObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(entry => {
+  if (entry.isIntersecting) { frameObserver.unobserve(entry.target); enqueue(entry.target.loadImage, 0); }
+}), { rootMargin: '300px' }) : null;
+
+function renderCollection(key) {
+  const collection = COLLECTIONS[key], items = artifactsIn(view.artifacts, key);
+  hero.hidden = true; document.title = `${collection.title} · Forgotten Artifacts · NASA APOD MUSEUM`;
   root.innerHTML = `<nav class="fa-crumbs" aria-label="Breadcrumb"><a href="forgotten-artifacts.html">← Forgotten Artifacts</a></nav>
-<header class="fa-chead"><p class="eyebrow">Forgotten Artifacts</p><h1>${esc(c.title)}</h1><p class="fa-lead">${esc(c.desc)}</p><p class="fa-count">${items.length} ${items.length === 1 ? 'artifact' : 'artifacts'}</p></header>
-<div class="grid">${items.length ? items.map(a => `<article class="fa-card"><div class="fa-ph fa-skel" data-id="${esc(a.id)}"><span class="fa-sr">Loading image</span></div><p class="fa-meta">${esc([a.missionName, a.artifactType].filter(Boolean).join(' · '))}</p><h3><a href="?artifact=${encodeURIComponent(a.id)}">${esc(a.name || a.shortName)}</a></h3><p>${esc(short(a.description, 130))}</p>${badge(a)}</article>`).join('') : msg('No artifacts are listed in this collection.')}</div>`;
-  root.querySelectorAll('.fa-ph').forEach(ph => { const a = items.find(x => x.id === ph.dataset.id); ph.__load = () => loadThumb(a, ph); seen ? seen.observe(ph) : enqueue(ph.__load, 1); });
+<header class="fa-chead"><p class="eyebrow">Forgotten Artifacts</p><h1>${esc(collection.title)}</h1><p class="fa-lead">${esc(collection.description)}</p><p class="fa-count">${countLabel(items.length)}</p></header>
+<div class="grid">${items.length ? items.map(artifact => `<article class="fa-card"><div class="fa-ph fa-skel" data-id="${esc(artifact.id)}"><span class="fa-sr">Loading image</span></div><p class="fa-meta">${esc([artifact.missionName, artifact.artifactType].filter(Boolean).join(' · '))}</p><h3><a href="?artifact=${encodeURIComponent(artifact.id)}">${esc(artifact.name || artifact.shortName)}</a></h3><p>${esc(shorten(artifact.description, 130))}</p>${statusBadge(artifact)}</article>`).join('') : msg('No artifacts are listed in this collection.')}</div>`;
+  root.querySelectorAll('.fa-ph').forEach(frame => {
+    const artifact = items.find(item => item.id === frame.dataset.id);
+    frame.loadImage = () => loadThumbnail(artifact, frame);
+    if (frameObserver) frameObserver.observe(frame); else enqueue(frame.loadImage, 1);
+  });
 }
-root.addEventListener('click', e => { const b = e.target.closest('[data-retry]'); if (b) { const ph = b.closest('.fa-ph'), a = ALL.find(x => String(x.id) === b.dataset.retry); enqueue(() => loadThumb(a, ph), 0); } });
-// ---- detail
-const credit = h => `${esc(h.title)} · NASA ID ${esc(h.nasaId)}${h.creator ? ' · ' + esc(h.creator) : ''}${h.center ? ' · ' + esc(h.center) : ''}${h.date ? ' · ' + esc(h.date.slice(0, 10)) : ''} · <a href="${esc(detailsUrl(h.nasaId))}" rel="noopener">Original on NASA Image and Video Library</a>`;
-const preload = src => new Promise((ok, no) => { const i = new Image(); i.onload = ok; i.onerror = no; i.src = src; });
-async function imageBlock(a) {
-  const fr = $('#fa-img .fa-frame'), cap = $('#fa-img figcaption');
-  fr.classList.add('fa-skel'); fr.innerHTML = '<span class="fa-note">Finding a NASA image…</span>'; cap.textContent = '';
-  try {
-    const h = await findMedia(a, 'image');
-    if (!h) { fr.classList.remove('fa-skel'); fr.innerHTML = '<span class="fa-note">No verified NASA image was found for this artifact. Its information is shown below.</span>'; return; }
-    const im = new Image(); im.alt = `${a.name || a.shortName}: NASA image “${h.title}”`; im.decoding = 'async'; im.width = 1120; im.height = 630;
-    im.addEventListener('load', () => fr.classList.remove('fa-skel')); im.addEventListener('error', () => { fr.classList.remove('fa-skel'); fr.innerHTML = '<span class="fa-note">The NASA image could not be displayed.</span>'; });
-    cap.innerHTML = credit(h);
-    if (h.thumb) { im.src = h.thumb; fr.replaceChildren(im); } // instant: the preview already fetched for the gallery
-    try { const src = pickImage(await getAssets(h.nasaId)); if (src && src !== h.thumb) { await preload(src); im.src = src; if (!im.isConnected) fr.replaceChildren(im); } else if (!h.thumb) throw new Error('none'); }
-    catch { if (!h.thumb) { fr.classList.remove('fa-skel'); fr.innerHTML = '<span class="fa-note">The NASA media record has no usable image file.</span>'; } else cap.innerHTML = credit(h) + ' · Larger version unavailable; showing the preview.'; }
-  } catch (e) { fr.classList.remove('fa-skel'); fr.innerHTML = `<span class="fa-note">${esc(e.message)}</span><button type="button" class="fa-retry" data-act="image">Retry</button>`; }
+
+// ---- artifact detail
+async function fullSizeUrl(media) {
+  if (media.source === 'wikimedia-commons') return getCommonsThumbnail(media.sourcePageUrl, 1280);
+  return media.nasaId ? pickImageUrl(await getAssetUrls(media.nasaId)) : '';
 }
-let vid = null;
-async function videoBlock(a) {
-  const box = $('#fa-vid');
+async function renderDetailImage(artifact) {
+  const frame = $('#fa-img .fa-frame'), caption = $('#fa-img figcaption');
+  showLoading(frame, 'Finding an image…', true); caption.textContent = '';
+  const fail = (text, retry) => { frame.classList.remove('fa-skel'); frame.innerHTML = `<span class="fa-note">${esc(text)}</span>${retry ? '<button type="button" class="fa-retry" data-action="retry-image">Retry</button>' : ''}`; };
   try {
-    const h = await findMedia(a, 'video'); if (!h) return;
-    vid = { a, h };
-    box.innerHTML = `<h2 class="fa-h">Video</h2><figure class="fa-fig"><div class="fa-frame" id="fa-vframe">${h.thumb ? `<img src="${esc(h.thumb)}" alt="Preview of the NASA video “${esc(h.title)}”" loading="lazy" decoding="async" width="640" height="360">` : ''}<button type="button" class="fa-play" data-act="video">Load video</button></div><figcaption>${credit(h)}</figcaption></figure>`;
-  } catch { /* video is optional; the artifact page is complete without it */ }
+    const result = await resolveImage(artifact, { onStage: text => showLoading(frame, text, true) });
+    if (result.status !== 'ok') return fail(result.message + (result.status === 'none' ? ' The artifact information below is unaffected.' : ''), result.status === 'error');
+    const media = result.media, image = new Image();
+    image.alt = `${artifact.name}: ${SOURCE_LABEL[media.source]} image “${media.title}”`; image.decoding = 'async'; image.width = 1120; image.height = 630;
+    image.addEventListener('load', () => frame.classList.remove('fa-skel'));
+    image.addEventListener('error', () => fail('The image could not be displayed.', false));
+    caption.innerHTML = attributionHtml(media);
+    image.src = media.imageUrl; frame.replaceChildren(image); // instant: the preview already fetched for the gallery
+    try { // then swap in a larger rendition, only for this artifact
+      const larger = await fullSizeUrl(media);
+      if (larger && larger !== media.imageUrl) await new Promise((done, failed) => { const probe = new Image(); probe.onload = done; probe.onerror = failed; probe.src = larger; }).then(() => { image.src = larger; });
+    } catch (error) { console.debug('[forgotten-artifacts] larger rendition unavailable', error.message); caption.innerHTML = attributionHtml(media) + ' · Larger version unavailable; showing the preview.'; }
+  } catch (error) { console.warn('[forgotten-artifacts] detail image failed', error); fail('Image loading failed. Try again.', true); }
+}
+async function renderVideoPoster(artifact) {
+  try {
+    const hit = await findVideo(artifact);
+    if (!hit) return;
+    view.video = hit;
+    $('#fa-vid').innerHTML = `<h2 class="fa-h">Video</h2><figure class="fa-fig"><div class="fa-frame" id="fa-vframe">${hit.previewUrl ? `<img src="${esc(hit.previewUrl)}" alt="Preview of the NASA video “${esc(hit.title)}”" loading="lazy" decoding="async" width="640" height="360">` : ''}<button type="button" class="fa-play" data-action="load-video">Load video</button></div><figcaption>${attributionHtml({ source: 'nasa', title: hit.title, nasaId: hit.nasaId, creator: hit.creator, center: hit.center, date: hit.date, sourcePageUrl: 'https://images.nasa.gov/details/' + encodeURIComponent(hit.nasaId) })}</figcaption></figure>`;
+  } catch (error) { console.debug('[forgotten-artifacts] video lookup skipped', error.message); } // video is optional
 }
 async function loadVideo() {
-  const fr = $('#fa-vframe'), { h } = vid; fr.classList.add('fa-skel'); fr.innerHTML = '<span class="fa-note">Loading video…</span>';
+  const frame = $('#fa-vframe'), hit = view.video;
+  showLoading(frame, 'Loading video…', true);
   try {
-    const hrefs = await getAssets(h.nasaId), src = pickVideo(hrefs); if (!src) throw new Error('The video record has no playable file.');
-    const cap = await getCaptions(h.nasaId), poster = pickPoster(hrefs) || h.thumb, v = document.createElement('video');
-    v.controls = true; v.preload = 'none'; if (poster) v.poster = poster; v.innerHTML = `<source src="${esc(src)}" type="video/mp4">${cap ? `<track kind="captions" src="${esc(cap)}" srclang="en" label="English">` : ''}`;
-    fr.classList.remove('fa-skel'); fr.replaceChildren(v);
-  } catch (e) { fr.classList.remove('fa-skel'); fr.innerHTML = `<span class="fa-note">Video unavailable: ${esc(e.message)}</span><button type="button" class="fa-retry" data-act="video">Retry</button>`; }
+    const urls = await getAssetUrls(hit.nasaId), source = pickVideoUrl(urls);
+    if (!source) throw new Error('The video record has no playable file.');
+    const captions = await getCaptionUrl(hit.nasaId), poster = pickPosterUrl(urls) || hit.previewUrl, video = document.createElement('video');
+    video.controls = true; video.preload = 'none'; if (poster) video.poster = poster;
+    video.innerHTML = `<source src="${esc(source)}" type="video/mp4">${captions ? `<track kind="captions" src="${esc(captions)}" srclang="en" label="English">` : ''}`;
+    frame.classList.remove('fa-skel'); frame.replaceChildren(video);
+  } catch (error) { frame.classList.remove('fa-skel'); frame.innerHTML = `<span class="fa-note">Video unavailable: ${esc(error.message)}</span><button type="button" class="fa-retry" data-action="load-video">Retry</button>`; }
 }
-root.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if (!b) return; if (b.dataset.act === 'video' && vid) loadVideo(); if (b.dataset.act === 'image') imageBlock(CUR); });
-function facts(a) {
-  const rows = [['Mission', a.missionName], ['Agency', a.missionAgency], ['Type', a.artifactType], ['Location', [a.location, a.landingSite].filter(Boolean).join(' — ')], ['Launch', a.launchDate], ['Landing', a.landingDate], ['Mission end', a.missionEndDate], ['Last contact', a.lastContactDate], ['Status', [a.status, a.statusDescription].filter(Boolean).join(' — ')]].filter(r => r[1]);
-  return rows.length ? `<dl class="fa-facts">${rows.map(r => `<dt>${esc(r[0])}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>` : '';
+function factsHtml(artifact) {
+  const rows = [['Mission', artifact.missionName], ['Agency', artifact.missionAgency], ['Type', artifact.artifactType], ['Location', [artifact.location, artifact.landingSite].filter(Boolean).join(' — ')], ['Launch', artifact.launchDate], ['Landing', artifact.landingDate], ['Mission end', artifact.missionEndDate], ['Last contact', artifact.lastContactDate], ['Status', [formatStatus(artifact.status), artifact.statusDescription].filter(Boolean).join(' — ')]].filter(row => row[1]);
+  return rows.length ? `<dl class="fa-facts">${rows.map(row => `<dt>${esc(row[0])}</dt><dd>${esc(row[1])}</dd>`).join('')}</dl>` : '';
 }
-const tlItem = it => { if (typeof it === 'string') return `<li><span class="e" style="grid-column:1/-1">${esc(it)}</span></li>`; const d = first(it, ['date', 'year', 'time', 'when']), e = first(it, ['event', 'title', 'description', 'label', 'text']) || Object.values(it).filter(v => typeof v === 'string' && v !== d).join(' — '); return `<li><span class="d">${esc(d)}</span><span class="e">${esc(e)}</span></li>`; };
-function detail(all, id) {
-  const a = all.find(x => String(x.id) === id); head.hidden = true;
-  if (!a) { root.innerHTML = `<nav class="fa-crumbs"><a href="forgotten-artifacts.html">← Forgotten Artifacts</a></nav>${msg('This artifact was not found.', 'err')}`; return; }
-  const k = Object.keys(COL).find(x => COL[x].loc === a.location), unc = arr(a.uncertainties), legacy = arr(a.scientificLegacy).map(plain).flatMap(s => s.split(/\n+/)).filter(s => s.trim());
-  document.title = (a.name || a.shortName) + ' · Forgotten Artifacts · NASA APOD MUSEUM'; CUR = a;
-  root.innerHTML = `<article class="fa-detail"><nav class="fa-crumbs" aria-label="Breadcrumb"><a href="forgotten-artifacts.html">Forgotten Artifacts</a>${k ? `<span aria-hidden="true">/</span><a href="?collection=${k}">← Back to ${esc(COL[k].title)}</a>` : ''}</nav>
-<header class="fa-dhead"><p class="eyebrow">${esc([a.artifactType, a.location].filter(Boolean).join(' · '))}</p><h1>${esc(a.name || a.shortName)}</h1><p class="fa-sub">${esc([a.missionName, a.missionAgency].filter(Boolean).join(' · '))}</p>${badge(a)}</header>
+function renderDetail(artifactId) {
+  const artifact = view.artifacts.find(item => String(item.id) === artifactId);
+  hero.hidden = true;
+  if (!artifact) { root.innerHTML = `<nav class="fa-crumbs"><a href="forgotten-artifacts.html">← Forgotten Artifacts</a></nav>${msg('This artifact was not found.', 'err')}`; return; }
+  view.current = artifact; document.title = `${artifact.name || artifact.shortName} · Forgotten Artifacts · NASA APOD MUSEUM`;
+  const key = collectionKeyOf(artifact), legacy = paragraphsOf(artifact.scientificLegacy), uncertainties = asList(artifact.uncertainties), timeline = asList(artifact.timeline);
+  root.innerHTML = `<article class="fa-detail"><nav class="fa-crumbs" aria-label="Breadcrumb"><a href="forgotten-artifacts.html">Forgotten Artifacts</a>${key ? `<span aria-hidden="true">/</span><a href="?collection=${key}">← Back to ${esc(COLLECTIONS[key].title)}</a>` : ''}</nav>
+<header class="fa-dhead"><p class="eyebrow">${esc([artifact.artifactType, artifact.location].filter(Boolean).join(' · '))}</p><h1>${esc(artifact.name || artifact.shortName)}</h1><p class="fa-sub">${esc([artifact.missionName, artifact.missionAgency].filter(Boolean).join(' · '))}</p>${statusBadge(artifact)}</header>
 <figure class="fa-fig" id="fa-img"><div class="fa-frame fa-skel"></div><figcaption></figcaption></figure><div id="fa-vid"></div>
-<div class="fa-cols"><aside class="fa-side" aria-label="Artifact details"><h2>At a glance</h2>${facts(a)}</aside>
-<div class="fa-main"><h2>Mission overview</h2>${para(a.description)}${para(a.missionPurpose)}
-${a.missionStory ? `<h2>Mission story</h2>${para(a.missionStory)}` : ''}
-${legacy.length ? `<h2>Scientific legacy</h2><blockquote class="fa-legacy">${legacy.map(s => `<p>${esc(s)}</p>`).join('')}</blockquote>` : ''}
-${arr(a.timeline).length ? `<h2>Mission timeline</h2><ol class="fa-tl">${arr(a.timeline).map(tlItem).join('')}</ol>` : ''}
-${unc.length ? `<h2>Known uncertainties</h2><ul class="fa-list">${unc.map(u => `<li>${esc(plain(u))}</li>`).join('')}</ul>` : ''}</div></div>
-<section class="fa-sources"><h2>Sources and credits</h2><ul>${arr(a.sources).map(s => `<li>${source(s)}</li>`).join('')}<li>Images and video: NASA Image and Video Library; the credit for each item is shown with it.</li></ul></section></article>`;
-  imageBlock(a); videoBlock(a);
+<div class="fa-cols"><aside class="fa-side" aria-label="Artifact details"><h2>At a glance</h2>${factsHtml(artifact)}</aside>
+<div class="fa-main"><h2>Mission overview</h2>${paragraphs(artifact.description)}${paragraphs(artifact.missionPurpose)}
+${artifact.missionStory ? `<h2>Mission story</h2>${paragraphs(artifact.missionStory)}` : ''}
+${legacy.length ? `<h2>Scientific legacy</h2><blockquote class="fa-legacy">${legacy.map(text => `<p>${esc(text)}</p>`).join('')}</blockquote>` : ''}
+${timeline.length ? `<h2>Mission timeline</h2><ol class="fa-tl">${timeline.map(timelineItem).join('')}</ol>` : ''}
+${uncertainties.length ? `<h2>Known uncertainties</h2><ul class="fa-list">${uncertainties.map(item => `<li>${esc(textOf(item))}</li>`).join('')}</ul>` : ''}</div></div>
+<section class="fa-sources"><h2>Sources and credits</h2><ul>${asList(artifact.sources).map(item => `<li>${sourceItem(item)}</li>`).join('')}<li>Images: NASA Image and Video Library first, Wikimedia Commons as a fallback; the source, creator and license are shown with each image.</li></ul></section></article>`;
+  renderDetailImage(artifact); renderVideoPoster(artifact);
 }
+
+// ---- events: one delegated click handler for every retry / load action
+const clickActions = {
+  'retry-thumbnail': control => { const frame = control.closest('.fa-ph'), artifact = view.artifacts.find(item => String(item.id) === control.dataset.id); enqueue(() => loadThumbnail(artifact, frame), 0); },
+  'retry-image': () => renderDetailImage(view.current),
+  'load-video': () => loadVideo()
+};
+root.addEventListener('click', event => { const control = event.target.closest('[data-action]'); if (control && clickActions[control.dataset.action]) clickActions[control.dataset.action](control); });
+
+// ---- start
 try {
-  const all = await load(); ALL = all;
-  if (q.get('artifact')) detail(all, q.get('artifact'));
-  else if (COL[q.get('collection')]) collection(all, q.get('collection'));
-  else landing(all);
-} catch (e) { root.innerHTML = msg(e.message, 'err'); }
+  view.artifacts = await loadArtifacts();
+  if (params.get('artifact')) renderDetail(params.get('artifact'));
+  else if (COLLECTIONS[params.get('collection')]) renderCollection(params.get('collection'));
+  else renderLanding();
+} catch (error) { root.innerHTML = msg(error.message, 'err'); }
