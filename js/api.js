@@ -4,7 +4,7 @@
 export const FIRST = '1995-06-16';
 export const PER = 25; // NASA's documented maximum for count; also our window size
 const TTL = { latest: 30 * 60e3, hist: 7 * 864e5, wiki: 7 * 864e5 };
-const PREFIX = 'apod2:'; // new prefix: entries cached from the old API never collide
+const PREFIX = 'apod3:'; // bumped again: results cached while the proxy sent unsupported parameters (wrong rows, "no entry") must not be reused
 const mem = new Map(), inflight = new Map();
 
 export const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -67,7 +67,7 @@ const ls = {
   del: k => { try { localStorage.removeItem(k); } catch {} },
   keys: () => { try { return Array.from({ length: localStorage.length }, (_, i) => localStorage.key(i)); } catch { return []; } }
 };
-try { ls.keys().filter(k => k && k.startsWith('apod:')).forEach(ls.del); } catch {} // one-off: drop entries from the old API
+try { ls.keys().filter(k => k && (k.startsWith('apod:') || k.startsWith('apod2:'))).forEach(ls.del); } catch {} // one-off: drop entries cached by older versions
 function prune() {
   const rows = ls.keys().filter(k => k && k.startsWith(PREFIX)).map(k => {
     try { return [k, JSON.parse(ls.get(k)).t || 0]; } catch { return [k, 0]; }
