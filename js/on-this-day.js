@@ -72,7 +72,11 @@ async function show() {
     grid.innerHTML = msg(e.message, 'err');
   }
 }
-$('#show').onclick = show;
+// "Show entries" is a submit button inside <form id="controls">. Without preventDefault the browser reloads the
+// page on every click, which throws the chosen month/day/years away and re-runs show() with the defaults.
+const form = $('#show').form;
+if (form) form.addEventListener('submit', ev => { ev.preventDefault(); show(); }); // also covers Enter in a select
+else $('#show').onclick = show;
 $('#rand').onclick = async () => {
   const run = stopCurrent();
   setNote('');

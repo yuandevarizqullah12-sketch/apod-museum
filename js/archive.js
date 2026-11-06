@@ -44,7 +44,9 @@ $('#more').onclick = () => { page++; load(false); };
 $('#latest').onclick = () => { span = { from: FIRST, to: today() }; load(true); };
 // Picking a year/month means "browse that period", so a leftover single date must not override it.
 $('#year').onchange = $('#month').onchange = () => { $('#date').value = ''; };
-$('#go').onclick = () => {
+// "Browse" is a submit button inside <form id="controls">. Without preventDefault the browser reloads the page after
+// this handler runs, which discards the chosen year/month and cancels the jump to detail.html for a single date.
+function browse() {
   const d = $('#date').value;
   if (d) {
     if (!isValidDate(d) || d < FIRST || d > today()) return showError('Pick a date from June 16, 1995 to today.');
@@ -59,5 +61,10 @@ $('#go').onclick = () => {
   if (to < FIRST || from > today()) return showError('There are no entries for that period yet.');
   span = { from, to };                   // getRange clamps to June 16, 1995 … today
   load(true);
-};
+}
+const form = $('#go').form;
+if (form) {
+  form.noValidate = true;                // our own range messages replace the browser's date-input tooltip
+  form.addEventListener('submit', ev => { ev.preventDefault(); browse(); }); // also covers Enter in the date field
+} else $('#go').onclick = browse;
 load(true);

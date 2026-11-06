@@ -24,6 +24,7 @@ background-color:var(--bg);overflow:hidden}
 .btns{display:flex;gap:var(--s2);flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;min-height:48px;padding:0 var(--s3);text-decoration:none;border:1px solid var(--fg);font:600 .95rem var(--bd);letter-spacing:.04em;background:none;color:var(--fg);cursor:pointer;}
 .btn.primary{background:var(--fg);color:var(--bg)}.btn:hover{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+.btn[hidden]{display:none} /* .btn's display would otherwise override the hidden attribute: Archive "Load more" stayed visible when there was nothing more to load */
 .feature figure img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
 .feature .meta{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-top:var(--s3);align-items:start}
 .feature .meta p{color:var(--mut);max-width:62ch}

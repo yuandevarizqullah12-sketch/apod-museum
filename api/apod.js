@@ -1,15 +1,27 @@
-// Vercel serverless proxy for NASA's APOD WordPress endpoint (apod-basic).
-// Supported requests (exactly one form per call):
+// Vercel serverless proxy for NASA's APOD "apod-basic" WordPress endpoint.
+//
+// Browser-facing contract (unchanged; js/api.js depends on it). Exactly one form per call:
 //   ?date=YYYY-MM-DD
 //   ?start_date=YYYY-MM-DD[&end_date=YYYY-MM-DD]   (max 31 days per call)
 //   ?count=1..25                                    (random entries)
 // Success: 200 { items: [...] }.  Failure: 4xx/5xx { error, code }.
+//
+// Upstream contract (NASA, "APOD APIs and RSS info"): apod-basic does NOT take the legacy
+// planetary/apod parameters (date, start_date, end_date, count). It documents:
+//   GET {BASE}/{YYMMDD}                                                one entry, by date code
+//   GET {BASE}?date_from=YYMMDD&date_to=YYMMDD&page=N&per_page=1..25   a list
+// WordPress ignores query arguments it does not know and answers with its default list, so
+// sending legacy parameters returns the wrong entries instead of an error. This proxy therefore
+// translates the browser contract into the documented parameters, and keeps only rows whose
+// date really belongs to the request.
 const BASE = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic';
 const FIRST = '1995-06-16';
 const MAX_COUNT = 25;
 const MAX_SPAN_DAYS = 31;
-const ALLOWED = new Set(['date', 'start_date', 'end_date', 'count']);
+const PER_PAGE = 25;                                   // NASA's documented per_page maximum
+const MAX_PAGES = Math.ceil(MAX_SPAN_DAYS / PER_PAGE); // a 31-day span needs at most 2 pages
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const ALLOWED = new Set(['date', 'start_date', 'end_date', 'count']);
 const UPSTREAM_TIMEOUT_MS = 9000;
 
 // APOD "today" is the US Eastern calendar day, not the server's UTC day.
@@ -23,6 +35,7 @@ const ms = d => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10));
 const fmt = t => new Date(t).toISOString().slice(0, 10);
 export const isRealDate = d => typeof d === 'string' && DATE_RE.test(d) && fmt(ms(d)) === d;
 const addDays = (d, n) => fmt(ms(d) + n * 864e5);
+const yymmdd = d => d.slice(2, 4) + d.slice(5, 7) + d.slice(8, 10); // NASA's date code: 1995-06-16 -> 950616
 const fail = (status, code, error) => ({ ok: false, status, code, error });
 
 function checkDate(value, name, today) {
@@ -70,9 +83,11 @@ function mediaUrl(html) {
   const u = decodeAmp(m[1]);
   return u.startsWith('//') ? 'https:' + u : /^https?:\/\//i.test(u) ? u : '';
 }
+// An entry's calendar day as YYYY-MM-DD ('' when it has none). Tolerates a trailing time part.
+const dateOf = r => (r && typeof r.date === 'string' && isRealDate(r.date.slice(0, 10)) ? r.date.slice(0, 10) : '');
 // Small, predictable item shape (basic_html is large and only mined for the video/embed URL).
 const slim = r => ({
-  date: r.date,
+  date: dateOf(r),
   title: r.title || '',
   explanation: r.explanation || '',
   media_type: r.media_type || 'image',
@@ -97,37 +112,91 @@ function send(res, status, body, cache = 'none', extra = {}) {
 }
 const sendErr = (res, status, code, error, extra) => send(res, status, { error, code }, 'none', extra);
 
+/* ---------- upstream (NASA apod-basic) ---------- */
+class UpstreamError extends Error {
+  constructor(status, code, message, extra) { super(message); this.status = status; this.code = code; this.extra = extra; }
+}
+
+// One upstream GET. Resolves to parsed JSON, or null for "no such entry" (HTTP 404). Everything else that is not a
+// usable JSON answer throws an UpstreamError carrying the status/code the browser should see.
+async function getUpstream(path, params = {}) {
+  const qs = new URLSearchParams(params);
+  // Server-side only; sent to NASA only if configured. Never logged or returned.
+  if (process.env.NASA_API_KEY) qs.set('api_key', process.env.NASA_API_KEY);
+  const query = qs.toString();
+  let r;
+  try {
+    r = await fetch(BASE + path + (query ? '?' + query : ''), { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS) });
+  } catch (e) {
+    const timeout = e && (e.name === 'TimeoutError' || e.name === 'AbortError');
+    throw new UpstreamError(timeout ? 504 : 502, timeout ? 'upstream_timeout' : 'upstream_unreachable', timeout ? 'The NASA archive took too long to respond.' : 'Could not reach the NASA archive.');
+  }
+  if (r.status === 404) return null;
+  if (r.status === 429) throw new UpstreamError(429, 'rate_limited', 'Rate limited by NASA.', r.headers.get('retry-after') ? { 'Retry-After': r.headers.get('retry-after') } : undefined);
+  if (r.status === 400) throw new UpstreamError(400, 'upstream_rejected', 'NASA rejected the request parameters.');
+  if (!r.ok) throw new UpstreamError(502, 'upstream_error', 'The NASA archive returned an error.');
+
+  let data;
+  try { data = await r.json(); } catch { throw new UpstreamError(502, 'invalid_response', 'The NASA archive returned an unreadable response.'); }
+
+  // WordPress REST errors look like { code, message, data: { status } } — never treat them as entries.
+  if (data && !Array.isArray(data) && typeof data === 'object' && data.code && !data.date) {
+    const s = data.data && +data.data.status;
+    if (s === 404) return null;
+    throw new UpstreamError(502, 'upstream_error', 'The NASA archive returned an error.');
+  }
+  return data;
+}
+const asRows = data => (Array.isArray(data) ? data : data && typeof data === 'object' ? [data] : []);
+
+// One day: the documented per-date route. Only an entry that really is that day is returned.
+async function fetchDate(date) {
+  return asRows(await getUpstream('/' + yymmdd(date))).filter(x => dateOf(x) === date);
+}
+
+// A span: the documented date_from/date_to list, paged at NASA's 25-per-page maximum.
+async function fetchSpan(start, end) {
+  const rows = [];
+  for (let page = 1; page <= MAX_PAGES; page++) {
+    let data;
+    try { data = await getUpstream('', { date_from: yymmdd(start), date_to: yymmdd(end), page, per_page: PER_PAGE }); }
+    catch (e) { if (page > 1 && e.code === 'upstream_rejected') break; throw e; } // WordPress answers 400 for a page past the last one
+    const list = asRows(data);
+    rows.push(...list);
+    if (list.length < PER_PAGE) break;
+  }
+  return rows.filter(x => { const d = dateOf(x); return d >= start && d <= end; });
+}
+
+// Random entries: apod-basic has no count parameter, so pick random archive days and look each up.
+// A pick without an entry (a gap in the archive, or today's not yet published) is simply redrawn.
+async function fetchRandom(count, today) {
+  const lo = ms(FIRST), days = (ms(today) - lo) / 864e5 + 1, got = new Map();
+  for (let round = 0; round < 3 && got.size < count; round++) {
+    const picks = new Set();
+    while (picks.size < count - got.size) picks.add(fmt(lo + Math.floor(Math.random() * days) * 864e5));
+    const found = await Promise.all([...picks].filter(d => !got.has(d)).map(fetchDate));
+    found.flat().forEach(x => got.set(dateOf(x), x));
+  }
+  return [...got.values()];
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') return sendErr(res, 405, 'method_not_allowed', 'Method not allowed', { Allow: 'GET' });
   const v = parseQuery(req.query || {});
   if (!v.ok) return sendErr(res, v.status, v.code, v.error);
 
-  // Server-side only; sent to NASA only if configured. Never logged or returned.
-  const upstream = new URLSearchParams(v.params);
-  if (process.env.NASA_API_KEY) upstream.set('api_key', process.env.NASA_API_KEY);
-
-  let r;
+  let rows;
   try {
-    r = await fetch(`${BASE}?${upstream}`, { headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS) });
+    if (v.params.count) rows = await fetchRandom(+v.params.count, todayNY());
+    else if (v.params.date) rows = await fetchDate(v.params.date);
+    else rows = await fetchSpan(v.params.start_date, v.params.end_date);
   } catch (e) {
-    const timeout = e && (e.name === 'TimeoutError' || e.name === 'AbortError');
-    return sendErr(res, timeout ? 504 : 502, timeout ? 'upstream_timeout' : 'upstream_unreachable', timeout ? 'The NASA archive took too long to respond.' : 'Could not reach the NASA archive.');
+    if (e instanceof UpstreamError) return sendErr(res, e.status, e.code, e.message, e.extra);
+    return sendErr(res, 502, 'upstream_error', 'The NASA archive returned an error.');
   }
-  if (r.status === 404) return sendErr(res, 404, 'not_found', 'No APOD entry was found.');
-  if (r.status === 429) return sendErr(res, 429, 'rate_limited', 'Rate limited by NASA.', r.headers.get('retry-after') ? { 'Retry-After': r.headers.get('retry-after') } : undefined);
-  if (r.status === 400) return sendErr(res, 400, 'upstream_rejected', 'NASA rejected the request parameters.');
-  if (!r.ok) return sendErr(res, 502, 'upstream_error', 'The NASA archive returned an error.');
 
-  let data;
-  try { data = await r.json(); } catch { return sendErr(res, 502, 'invalid_response', 'The NASA archive returned an unreadable response.'); }
-
-  // WordPress REST errors look like { code, message, data: { status } } — never treat them as entries.
-  if (data && !Array.isArray(data) && typeof data === 'object' && data.code && !data.date) {
-    const s = data.data && +data.data.status;
-    return s === 404 ? sendErr(res, 404, 'not_found', 'No APOD entry was found.') : sendErr(res, 502, 'upstream_error', 'The NASA archive returned an error.');
-  }
-  const rows = Array.isArray(data) ? data : data && typeof data === 'object' ? [data] : [];
-  const items = rows.filter(x => x && isRealDate(x.date)).map(slim);
+  const items = [...new Map(rows.map(slim).map(x => [x.date, x])).values()].sort((a, b) => b.date.localeCompare(a.date));
   if (!items.length && v.params.date) return sendErr(res, 404, 'not_found', 'No APOD entry exists for that date.');
   return send(res, 200, { items }, v.cache);
 }
