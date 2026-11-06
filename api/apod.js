@@ -154,18 +154,31 @@ async function fetchDate(date) {
   return asRows(await getUpstream('/' + yymmdd(date))).filter(x => dateOf(x) === date);
 }
 
-// A span: the documented date_from/date_to list, paged at NASA's 25-per-page maximum.
+// A span. First try the documented date_from/date_to list (NASA's 25-per-page maximum). Whatever that list does not
+// deliver, for any reason (rejected parameters, different range semantics, a short page), is then fetched day by day
+// through the per-date route, which is the one request form confirmed to work. A 404 there is a genuine gap in the archive.
 async function fetchSpan(start, end) {
   const rows = [];
   for (let page = 1; page <= MAX_PAGES; page++) {
     let data;
     try { data = await getUpstream('', { date_from: yymmdd(start), date_to: yymmdd(end), page, per_page: PER_PAGE }); }
-    catch (e) { if (page > 1 && e.code === 'upstream_rejected') break; throw e; } // WordPress answers 400 for a page past the last one
+    catch (e) {
+      if (e.code === 'upstream_rejected' || e.code === 'upstream_error' || e.code === 'invalid_response') break; // list unusable or past the last page: fall back below
+      throw e; // rate limit / timeout / network: report, do not hammer NASA with a fallback
+    }
     const list = asRows(data);
     rows.push(...list);
     if (list.length < PER_PAGE) break;
   }
-  return rows.filter(x => { const d = dateOf(x); return d >= start && d <= end; });
+  const got = new Map();
+  for (const x of rows) { const d = dateOf(x); if (d >= start && d <= end) got.set(d, x); }
+  const missing = [];
+  for (let d = start; d <= end; d = addDays(d, 1)) if (!got.has(d)) missing.push(d);
+  for (let i = 0; i < missing.length; i += 6) { // 6 at a time
+    const found = await Promise.all(missing.slice(i, i + 6).map(fetchDate));
+    found.flat().forEach(x => got.set(dateOf(x), x));
+  }
+  return [...got.values()];
 }
 
 // Random entries: apod-basic has no count parameter, so pick random archive days and look each up.
